@@ -1,4 +1,7 @@
 <?php
+//Database Connection Code
+require_once('dbConnect.php');
+$sql = dbConnect();
   // Start the session
   session_start();
 $output_form = false;
@@ -11,11 +14,8 @@ if (isset($_SESSION['email'])) {
   // If the user isn't logged in, try to log them in
   if (!isset($_SESSION['email'])) {
     if (isset($_POST['submit'])) {
-      // Connect to the database
-      $connect=mysql_connect('localhost','root','delta2345','iii')
-		or die('Error connection_aborted');
-	$dbc=mysql_select_db('iii', $connect)
-		or die("Error selection_aborted");
+      
+    
       // Grab the user-entered log-in data
       $user_username = $_POST['email'];
       $user_password = $_POST['pass'];
@@ -23,11 +23,11 @@ if (isset($_SESSION['email'])) {
       if (!empty($user_username) && !empty($user_password)) {
         // Look up the username and password in the database
        	 $query = "SELECT username,email,auth FROM users WHERE email = '$user_username' AND password = '$user_password'";
-        $data = mysql_query( $query);
+        $data = mysqli_query($sql,$query);
 
-        if (mysql_num_rows($data)== 1) {
+        if (mysqli_num_rows($data)== 1) {
           // The log-in is OK so set the user ID and username session vars (and cookies), and redirect to the home page
-          $row = mysql_fetch_array($data);
+          $row = mysqli_fetch_array($data);
           $_SESSION['username'] = $row['username'];
           $_SESSION['email'] = $row['email'];
           $_SESSION['auth'] = $row['auth'];

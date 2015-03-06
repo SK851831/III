@@ -2,27 +2,24 @@
 /**
 * 
 */
+require_once('../dbConnect.php');
+ $sql = dbConnect();
 class profile
 {
 	var $title,$uemail,$authen,$profilepic,$team,$uname;
+	
 	public function db(){
-		$connect=mysql_connect('localhost','root','delta2345','iii')
-		or die('Error connection_aborted');
- 		$dbc=mysql_select_db('iii', $connect)
-		or die("Error selection_aborted");
+		$con = $GLOBALS['sql'];
 		$query = "SELECT * FROM users WHERE email = \"".$_SESSION['email']."\"" ;
-		$data = mysql_query( $query);
-		$row = mysql_fetch_array($data);
+		$data = mysqli_query($con,$query);
+		$row = mysqli_fetch_array($data);
 		return $row;
 	}
 	public function dbt($authen){
-		$connect=mysql_connect('localhost','root','delta2345','iii')
-		or die('Error connection_aborted');
- 		$dbc=mysql_select_db('iii', $connect)
-		or die("Error selection_aborted");
+		$con = $GLOBALS['sql'];
 		$query = "SELECT auth FROM auth WHERE auth_no = ".$authen;
-		$data = mysql_query( $query);
-		$row = mysql_fetch_array($data);
+		$data = mysqli_query($con,$query);
+		$row = mysqli_fetch_array($data);
 		return $row['auth'];
 	}
 	public function profileinfo()
