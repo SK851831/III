@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2015 at 05:46 PM
+-- Generation Time: Mar 07, 2015 at 06:18 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `iii2_options` (
   `autoload` varchar(20) NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=118 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=120 ;
 
 --
 -- Dumping data for table `iii2_options`
@@ -255,7 +255,7 @@ INSERT INTO `iii2_options` (`option_id`, `option_name`, `option_value`, `autoloa
 (106, '_transient_dash_4077549d03da2e451c8b5f002294ff51', '<div class="rss-widget"><ul><li><a class=''rsswidget'' href=''https://wordpress.org/news/2015/02/wordpress-4-1-1/''>WordPress 4.1.1 Maintenance Release</a> <span class="rss-date">February 18, 2015</span><div class="rssSummary">WordPress 4.1.1 is now available. This maintenance release fixes 21 bugs in version 4.1. Some of you may have been waiting to update to the latest version until now, but there just wasn’t much to address. WordPress 4.1 was a smooth-sailing release and has seen more than 14 million downloads in the last two months. For a full [&hellip;]</div></li></ul></div><div class="rss-widget"><p><strong>RSS Error</strong>: WP HTTP Error: Operation timed out after 10484 milliseconds with 44779 out of 230427 bytes received</p></div>', 'no'),
 (107, 'theme_mods_twentyfifteen', 'a:1:{s:16:"sidebars_widgets";a:2:{s:4:"time";i:1425739498;s:4:"data";a:2:{s:19:"wp_inactive_widgets";a:0:{}s:9:"sidebar-1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}}}}', 'yes'),
 (108, 'current_theme', 'NewTek', 'yes'),
-(109, 'theme_mods_newtek', 'a:1:{i:0;b:0;}', 'yes'),
+(109, 'theme_mods_newtek', 'a:2:{i:0;b:0;s:18:"nav_menu_locations";a:1:{s:11:"header-menu";i:2;}}', 'yes'),
 (110, 'theme_switched', '', 'yes'),
 (111, '_transient_timeout_plugin_slugs', '1425826608', 'no'),
 (112, '_transient_plugin_slugs', 'a:2:{i:0;s:19:"akismet/akismet.php";i:1;s:9:"hello.php";}', 'no'),
@@ -263,7 +263,9 @@ INSERT INTO `iii2_options` (`option_id`, `option_name`, `option_value`, `autoloa
 (114, 'akismet_strictness', '0', 'yes'),
 (115, 'akismet_show_user_comments_approved', '1', 'yes'),
 (116, 'wordpress_api_key', 'cbd7f6887f06', 'yes'),
-(117, '_transient_random_seed', '959be14be615ff42c4a826bcbdb0e625', 'yes');
+(117, '_transient_random_seed', '959be14be615ff42c4a826bcbdb0e625', 'yes'),
+(118, 'post_count', '1', 'yes'),
+(119, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:"auto_add";a:0:{}}', 'yes');
 
 -- --------------------------------------------------------
 
@@ -279,14 +281,39 @@ CREATE TABLE IF NOT EXISTS `iii2_postmeta` (
   PRIMARY KEY (`meta_id`),
   KEY `post_id` (`post_id`),
   KEY `meta_key` (`meta_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `iii2_postmeta`
 --
 
 INSERT INTO `iii2_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
-(1, 2, '_wp_page_template', 'default');
+(1, 2, '_wp_page_template', 'default'),
+(2, 5, '_menu_item_type', 'custom'),
+(3, 5, '_menu_item_menu_item_parent', '0'),
+(4, 5, '_menu_item_object_id', '5'),
+(5, 5, '_menu_item_object', 'custom'),
+(6, 5, '_menu_item_target', ''),
+(7, 5, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(8, 5, '_menu_item_xfn', ''),
+(9, 5, '_menu_item_url', 'http://localhost/III/blog/android/'),
+(11, 6, '_menu_item_type', 'post_type'),
+(12, 6, '_menu_item_menu_item_parent', '0'),
+(13, 6, '_menu_item_object_id', '2'),
+(14, 6, '_menu_item_object', 'page'),
+(15, 6, '_menu_item_target', ''),
+(16, 6, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(17, 6, '_menu_item_xfn', ''),
+(18, 6, '_menu_item_url', ''),
+(19, 6, '_menu_item_orphaned', '1425748211'),
+(20, 7, '_menu_item_type', 'custom'),
+(21, 7, '_menu_item_menu_item_parent', '0'),
+(22, 7, '_menu_item_object_id', '7'),
+(23, 7, '_menu_item_object', 'custom'),
+(24, 7, '_menu_item_target', ''),
+(25, 7, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(26, 7, '_menu_item_xfn', ''),
+(27, 7, '_menu_item_url', 'http://localhost/III/');
 
 -- --------------------------------------------------------
 
@@ -323,7 +350,7 @@ CREATE TABLE IF NOT EXISTS `iii2_posts` (
   KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
   KEY `post_parent` (`post_parent`),
   KEY `post_author` (`post_author`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `iii2_posts`
@@ -333,7 +360,10 @@ INSERT INTO `iii2_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `po
 (1, 1, '2015-03-07 14:17:02', '2015-03-07 14:17:02', 'Welcome to <a href="http://localhost/III/blog/">Blog Sites</a>. This is your first post. Edit or delete it, then start blogging!', 'Hello world!', '', 'publish', 'open', 'open', '', 'hello-world', '', '', '2015-03-07 14:17:02', '2015-03-07 14:17:02', '', 0, 'http://localhost/III/blog/android/?p=1', 0, 'post', '', 1),
 (2, 1, '2015-03-07 14:17:02', '2015-03-07 14:17:02', 'This is an example page. It''s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I''m a bike messenger by day, aspiring actor by night, and this is my blog. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin'' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href="http://localhost/III/blog/android/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun!', 'Sample Page', '', 'publish', 'open', 'open', '', 'sample-page', '', '', '2015-03-07 14:17:02', '2015-03-07 14:17:02', '', 0, 'http://localhost/III/blog/android/?page_id=2', 0, 'page', '', 0),
 (3, 1, '2015-03-07 14:17:33', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-03-07 14:17:33', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/android/?p=3', 0, 'post', '', 0),
-(4, 3, '2015-03-07 15:37:12', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-03-07 15:37:12', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/android/?p=4', 0, 'post', '', 0);
+(4, 3, '2015-03-07 15:37:12', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-03-07 15:37:12', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/android/?p=4', 0, 'post', '', 0),
+(5, 1, '2015-03-07 17:11:42', '2015-03-07 17:11:42', '', 'Home', '', 'publish', 'open', 'open', '', 'home', '', '', '2015-03-07 17:15:23', '2015-03-07 17:15:23', '', 0, 'http://localhost/III/blog/android/?p=5', 1, 'nav_menu_item', '', 0),
+(6, 1, '2015-03-07 17:10:10', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'open', 'open', '', '', '', '', '2015-03-07 17:10:10', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/android/?p=6', 1, 'nav_menu_item', '', 0),
+(7, 1, '2015-03-07 17:11:43', '2015-03-07 17:11:43', '', 'III Members Page', '', 'publish', 'open', 'open', '', 'iii-members-page', '', '', '2015-03-07 17:15:23', '2015-03-07 17:15:23', '', 0, 'http://localhost/III/blog/android/?p=7', 2, 'nav_menu_item', '', 0);
 
 -- --------------------------------------------------------
 
@@ -349,14 +379,15 @@ CREATE TABLE IF NOT EXISTS `iii2_terms` (
   PRIMARY KEY (`term_id`),
   KEY `slug` (`slug`),
   KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `iii2_terms`
 --
 
 INSERT INTO `iii2_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
-(1, 'Uncategorized', 'uncategorized', 0);
+(1, 'Uncategorized', 'uncategorized', 0),
+(2, 'Menu 1', 'menu-1', 0);
 
 -- --------------------------------------------------------
 
@@ -377,7 +408,9 @@ CREATE TABLE IF NOT EXISTS `iii2_term_relationships` (
 --
 
 INSERT INTO `iii2_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
-(1, 1, 0);
+(1, 1, 0),
+(5, 2, 0),
+(7, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -395,14 +428,15 @@ CREATE TABLE IF NOT EXISTS `iii2_term_taxonomy` (
   PRIMARY KEY (`term_taxonomy_id`),
   UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
   KEY `taxonomy` (`taxonomy`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `iii2_term_taxonomy`
 --
 
 INSERT INTO `iii2_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
-(1, 1, 'category', '', 0, 1);
+(1, 1, 'category', '', 0, 1),
+(2, 2, 'nav_menu', '', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -494,7 +528,7 @@ CREATE TABLE IF NOT EXISTS `iii3_options` (
   `autoload` varchar(20) NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=122 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=124 ;
 
 --
 -- Dumping data for table `iii3_options`
@@ -612,11 +646,10 @@ INSERT INTO `iii3_options` (`option_id`, `option_name`, `option_value`, `autoloa
 (106, '_transient_feed_mod_d117b5738fbd35bd8c0391cda1f2b5d9', '1425739027', 'no'),
 (107, '_transient_timeout_dash_4077549d03da2e451c8b5f002294ff51', '1425782227', 'no'),
 (108, '_transient_dash_4077549d03da2e451c8b5f002294ff51', '<div class="rss-widget"><ul><li><a class=''rsswidget'' href=''https://wordpress.org/news/2015/02/wordpress-4-1-1/''>WordPress 4.1.1 Maintenance Release</a> <span class="rss-date">February 18, 2015</span><div class="rssSummary">WordPress 4.1.1 is now available. This maintenance release fixes 21 bugs in version 4.1. Some of you may have been waiting to update to the latest version until now, but there just wasn’t much to address. WordPress 4.1 was a smooth-sailing release and has seen more than 14 million downloads in the last two months. For a full [&hellip;]</div></li></ul></div><div class="rss-widget"><ul><li><a class=''rsswidget'' href=''http://wptavern.com/automattic-and-oliver-hotham-win-court-battle-against-dmca-takedown-abuser''>WPTavern: Automattic and Oliver Hotham Win Court Battle Against DMCA Takedown Abuser</a></li><li><a class=''rsswidget'' href=''http://ma.tt/2015/03/standalone-cameras/''>Matt: Standalone Cameras</a></li><li><a class=''rsswidget'' href=''http://wptavern.com/new-plugin-adds-openname-avatars-to-wordpress''>WPTavern: New Plugin Adds Openname Avatars to WordPress</a></li></ul></div>', 'no'),
-(109, '_transient_is_multi_author', '0', 'yes'),
 (110, '_transient_twentyfifteen_categories', '1', 'yes'),
 (111, 'theme_mods_twentyfifteen', 'a:1:{s:16:"sidebars_widgets";a:2:{s:4:"time";i:1425739526;s:4:"data";a:2:{s:19:"wp_inactive_widgets";a:0:{}s:9:"sidebar-1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}}}}', 'yes'),
 (112, 'current_theme', 'NewTek', 'yes'),
-(113, 'theme_mods_newtek', 'a:1:{i:0;b:0;}', 'yes'),
+(113, 'theme_mods_newtek', 'a:2:{i:0;b:0;s:18:"nav_menu_locations";a:1:{s:11:"header-menu";i:2;}}', 'yes'),
 (114, 'theme_switched', '', 'yes'),
 (115, '_transient_timeout_plugin_slugs', '1425826619', 'no'),
 (116, '_transient_plugin_slugs', 'a:2:{i:0;s:19:"akismet/akismet.php";i:1;s:9:"hello.php";}', 'no'),
@@ -624,7 +657,9 @@ INSERT INTO `iii3_options` (`option_id`, `option_name`, `option_value`, `autoloa
 (118, 'akismet_strictness', '0', 'yes'),
 (119, 'akismet_show_user_comments_approved', '1', 'yes'),
 (120, 'wordpress_api_key', 'cbd7f6887f06', 'yes'),
-(121, '_transient_random_seed', 'a204f6607fe4f029e2672459f8def72f', 'yes');
+(121, '_transient_random_seed', 'a204f6607fe4f029e2672459f8def72f', 'yes'),
+(122, 'post_count', '1', 'yes'),
+(123, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:"auto_add";a:0:{}}', 'yes');
 
 -- --------------------------------------------------------
 
@@ -640,14 +675,39 @@ CREATE TABLE IF NOT EXISTS `iii3_postmeta` (
   PRIMARY KEY (`meta_id`),
   KEY `post_id` (`post_id`),
   KEY `meta_key` (`meta_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `iii3_postmeta`
 --
 
 INSERT INTO `iii3_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
-(1, 2, '_wp_page_template', 'default');
+(1, 2, '_wp_page_template', 'default'),
+(2, 4, '_menu_item_type', 'custom'),
+(3, 4, '_menu_item_menu_item_parent', '0'),
+(4, 4, '_menu_item_object_id', '4'),
+(5, 4, '_menu_item_object', 'custom'),
+(6, 4, '_menu_item_target', ''),
+(7, 4, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(8, 4, '_menu_item_xfn', ''),
+(9, 4, '_menu_item_url', 'http://localhost/III/blog/web/'),
+(11, 5, '_menu_item_type', 'post_type'),
+(12, 5, '_menu_item_menu_item_parent', '0'),
+(13, 5, '_menu_item_object_id', '2'),
+(14, 5, '_menu_item_object', 'page'),
+(15, 5, '_menu_item_target', ''),
+(16, 5, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(17, 5, '_menu_item_xfn', ''),
+(18, 5, '_menu_item_url', ''),
+(19, 5, '_menu_item_orphaned', '1425748383'),
+(20, 6, '_menu_item_type', 'custom'),
+(21, 6, '_menu_item_menu_item_parent', '0'),
+(22, 6, '_menu_item_object_id', '6'),
+(23, 6, '_menu_item_object', 'custom'),
+(24, 6, '_menu_item_target', ''),
+(25, 6, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(26, 6, '_menu_item_xfn', ''),
+(27, 6, '_menu_item_url', 'http://localhost/III/');
 
 -- --------------------------------------------------------
 
@@ -684,7 +744,7 @@ CREATE TABLE IF NOT EXISTS `iii3_posts` (
   KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
   KEY `post_parent` (`post_parent`),
   KEY `post_author` (`post_author`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `iii3_posts`
@@ -693,7 +753,10 @@ CREATE TABLE IF NOT EXISTS `iii3_posts` (
 INSERT INTO `iii3_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 (1, 1, '2015-03-07 14:35:50', '2015-03-07 14:35:50', 'Welcome to <a href="http://localhost/III/blog/">Blog Sites</a>. This is your first post. Edit or delete it, then start blogging!', 'Hello world!', '', 'publish', 'open', 'open', '', 'hello-world', '', '', '2015-03-07 14:35:50', '2015-03-07 14:35:50', '', 0, 'http://localhost/III/blog/web/?p=1', 0, 'post', '', 1),
 (2, 1, '2015-03-07 14:35:50', '2015-03-07 14:35:50', 'This is an example page. It''s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I''m a bike messenger by day, aspiring actor by night, and this is my blog. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin'' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href="http://localhost/III/blog/web/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun!', 'Sample Page', '', 'publish', 'open', 'open', '', 'sample-page', '', '', '2015-03-07 14:35:50', '2015-03-07 14:35:50', '', 0, 'http://localhost/III/blog/web/?page_id=2', 0, 'page', '', 0),
-(3, 1, '2015-03-07 14:36:52', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-03-07 14:36:52', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/web/?p=3', 0, 'post', '', 0);
+(3, 1, '2015-03-07 14:36:52', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-03-07 14:36:52', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/web/?p=3', 0, 'post', '', 0),
+(4, 1, '2015-03-07 17:13:27', '2015-03-07 17:13:27', '', 'Home', '', 'publish', 'open', 'open', '', 'home', '', '', '2015-03-07 17:15:00', '2015-03-07 17:15:00', '', 0, 'http://localhost/III/blog/web/?p=4', 1, 'nav_menu_item', '', 0),
+(5, 1, '2015-03-07 17:13:02', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'open', 'open', '', '', '', '', '2015-03-07 17:13:02', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/web/?p=5', 1, 'nav_menu_item', '', 0),
+(6, 1, '2015-03-07 17:13:28', '2015-03-07 17:13:28', '', 'III Members Page', '', 'publish', 'open', 'open', '', 'iii-members-page', '', '', '2015-03-07 17:15:00', '2015-03-07 17:15:00', '', 0, 'http://localhost/III/blog/web/?p=6', 2, 'nav_menu_item', '', 0);
 
 -- --------------------------------------------------------
 
@@ -709,14 +772,15 @@ CREATE TABLE IF NOT EXISTS `iii3_terms` (
   PRIMARY KEY (`term_id`),
   KEY `slug` (`slug`),
   KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `iii3_terms`
 --
 
 INSERT INTO `iii3_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
-(1, 'Uncategorized', 'uncategorized', 0);
+(1, 'Uncategorized', 'uncategorized', 0),
+(2, 'Menu 1', 'menu-1', 0);
 
 -- --------------------------------------------------------
 
@@ -737,7 +801,9 @@ CREATE TABLE IF NOT EXISTS `iii3_term_relationships` (
 --
 
 INSERT INTO `iii3_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
-(1, 1, 0);
+(1, 1, 0),
+(4, 2, 0),
+(6, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -755,14 +821,15 @@ CREATE TABLE IF NOT EXISTS `iii3_term_taxonomy` (
   PRIMARY KEY (`term_taxonomy_id`),
   UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
   KEY `taxonomy` (`taxonomy`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `iii3_term_taxonomy`
 --
 
 INSERT INTO `iii3_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
-(1, 1, 'category', '', 0, 1);
+(1, 1, 'category', '', 0, 1),
+(2, 2, 'nav_menu', '', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -854,7 +921,7 @@ CREATE TABLE IF NOT EXISTS `iii4_options` (
   `autoload` varchar(20) NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=122 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=124 ;
 
 --
 -- Dumping data for table `iii4_options`
@@ -960,7 +1027,7 @@ INSERT INTO `iii4_options` (`option_id`, `option_name`, `option_value`, `autoloa
 (99, 'cron', 'a:2:{i:1425825933;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}s:7:"version";i:2;}', 'yes'),
 (101, 'theme_mods_twentyfifteen', 'a:1:{s:16:"sidebars_widgets";a:2:{s:4:"time";i:1425739537;s:4:"data";a:2:{s:19:"wp_inactive_widgets";a:0:{}s:9:"sidebar-1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}}}}', 'yes'),
 (102, 'current_theme', 'NewTek', 'yes'),
-(103, 'theme_mods_newtek', 'a:1:{i:0;b:0;}', 'yes'),
+(103, 'theme_mods_newtek', 'a:2:{i:0;b:0;s:18:"nav_menu_locations";a:1:{s:11:"header-menu";i:2;}}', 'yes'),
 (104, 'theme_switched', '', 'yes'),
 (105, '_transient_timeout_feed_ac0b00fe65abe10e0c5b588f3ed8c7ca', '1425782740', 'no');
 INSERT INTO `iii4_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -982,7 +1049,9 @@ INSERT INTO `iii4_options` (`option_id`, `option_name`, `option_value`, `autoloa
 (118, 'akismet_strictness', '0', 'yes'),
 (119, 'akismet_show_user_comments_approved', '1', 'yes'),
 (120, 'wordpress_api_key', 'cbd7f6887f06', 'yes'),
-(121, '_transient_random_seed', '51cff30a678a4f9ac6b054070e68ac47', 'yes');
+(121, '_transient_random_seed', '51cff30a678a4f9ac6b054070e68ac47', 'yes'),
+(122, 'post_count', '1', 'yes'),
+(123, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:"auto_add";a:0:{}}', 'yes');
 
 -- --------------------------------------------------------
 
@@ -998,14 +1067,39 @@ CREATE TABLE IF NOT EXISTS `iii4_postmeta` (
   PRIMARY KEY (`meta_id`),
   KEY `post_id` (`post_id`),
   KEY `meta_key` (`meta_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `iii4_postmeta`
 --
 
 INSERT INTO `iii4_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
-(1, 2, '_wp_page_template', 'default');
+(1, 2, '_wp_page_template', 'default'),
+(2, 4, '_menu_item_type', 'custom'),
+(3, 4, '_menu_item_menu_item_parent', '0'),
+(4, 4, '_menu_item_object_id', '4'),
+(5, 4, '_menu_item_object', 'custom'),
+(6, 4, '_menu_item_target', ''),
+(7, 4, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(8, 4, '_menu_item_xfn', ''),
+(9, 4, '_menu_item_url', 'http://localhost/III/blog/programming/'),
+(11, 5, '_menu_item_type', 'post_type'),
+(12, 5, '_menu_item_menu_item_parent', '0'),
+(13, 5, '_menu_item_object_id', '2'),
+(14, 5, '_menu_item_object', 'page'),
+(15, 5, '_menu_item_target', ''),
+(16, 5, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(17, 5, '_menu_item_xfn', ''),
+(18, 5, '_menu_item_url', ''),
+(19, 5, '_menu_item_orphaned', '1425748434'),
+(20, 6, '_menu_item_type', 'custom'),
+(21, 6, '_menu_item_menu_item_parent', '0'),
+(22, 6, '_menu_item_object_id', '6'),
+(23, 6, '_menu_item_object', 'custom'),
+(24, 6, '_menu_item_target', ''),
+(25, 6, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(26, 6, '_menu_item_xfn', ''),
+(27, 6, '_menu_item_url', 'http://localhost/III/');
 
 -- --------------------------------------------------------
 
@@ -1042,7 +1136,7 @@ CREATE TABLE IF NOT EXISTS `iii4_posts` (
   KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
   KEY `post_parent` (`post_parent`),
   KEY `post_author` (`post_author`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `iii4_posts`
@@ -1051,7 +1145,10 @@ CREATE TABLE IF NOT EXISTS `iii4_posts` (
 INSERT INTO `iii4_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 (1, 1, '2015-03-07 14:37:01', '2015-03-07 14:37:01', 'Welcome to <a href="http://localhost/III/blog/">Blog Sites</a>. This is your first post. Edit or delete it, then start blogging!', 'Hello world!', '', 'publish', 'open', 'open', '', 'hello-world', '', '', '2015-03-07 14:37:01', '2015-03-07 14:37:01', '', 0, 'http://localhost/III/blog/programming/?p=1', 0, 'post', '', 1),
 (2, 1, '2015-03-07 14:37:01', '2015-03-07 14:37:01', 'This is an example page. It''s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I''m a bike messenger by day, aspiring actor by night, and this is my blog. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin'' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href="http://localhost/III/blog/programming/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun!', 'Sample Page', '', 'publish', 'open', 'open', '', 'sample-page', '', '', '2015-03-07 14:37:01', '2015-03-07 14:37:01', '', 0, 'http://localhost/III/blog/programming/?page_id=2', 0, 'page', '', 0),
-(3, 1, '2015-03-07 14:45:33', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-03-07 14:45:33', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/programming/?p=3', 0, 'post', '', 0);
+(3, 1, '2015-03-07 14:45:33', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-03-07 14:45:33', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/programming/?p=3', 0, 'post', '', 0),
+(4, 1, '2015-03-07 17:14:29', '2015-03-07 17:14:29', '', 'Home', '', 'publish', 'open', 'open', '', 'home', '', '', '2015-03-07 17:14:29', '2015-03-07 17:14:29', '', 0, 'http://localhost/III/blog/programming/?p=4', 1, 'nav_menu_item', '', 0),
+(5, 1, '2015-03-07 17:13:53', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'open', 'open', '', '', '', '', '2015-03-07 17:13:53', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/programming/?p=5', 1, 'nav_menu_item', '', 0),
+(6, 1, '2015-03-07 17:14:29', '2015-03-07 17:14:29', '', 'III Members Page', '', 'publish', 'open', 'open', '', 'iii-members-page', '', '', '2015-03-07 17:14:29', '2015-03-07 17:14:29', '', 0, 'http://localhost/III/blog/programming/?p=6', 2, 'nav_menu_item', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1067,14 +1164,15 @@ CREATE TABLE IF NOT EXISTS `iii4_terms` (
   PRIMARY KEY (`term_id`),
   KEY `slug` (`slug`),
   KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `iii4_terms`
 --
 
 INSERT INTO `iii4_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
-(1, 'Uncategorized', 'uncategorized', 0);
+(1, 'Uncategorized', 'uncategorized', 0),
+(2, 'Menu 1', 'menu-1', 0);
 
 -- --------------------------------------------------------
 
@@ -1095,7 +1193,9 @@ CREATE TABLE IF NOT EXISTS `iii4_term_relationships` (
 --
 
 INSERT INTO `iii4_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
-(1, 1, 0);
+(1, 1, 0),
+(4, 2, 0),
+(6, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -1113,14 +1213,15 @@ CREATE TABLE IF NOT EXISTS `iii4_term_taxonomy` (
   PRIMARY KEY (`term_taxonomy_id`),
   UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
   KEY `taxonomy` (`taxonomy`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `iii4_term_taxonomy`
 --
 
 INSERT INTO `iii4_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
-(1, 1, 'category', '', 0, 1);
+(1, 1, 'category', '', 0, 1),
+(2, 2, 'nav_menu', '', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -1212,7 +1313,7 @@ CREATE TABLE IF NOT EXISTS `iii5_options` (
   `autoload` varchar(20) NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=120 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=122 ;
 
 --
 -- Dumping data for table `iii5_options`
@@ -1318,7 +1419,7 @@ INSERT INTO `iii5_options` (`option_id`, `option_name`, `option_value`, `autoloa
 (97, 'cron', 'a:2:{i:1425825945;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}s:7:"version";i:2;}', 'yes'),
 (99, 'theme_mods_twentyfifteen', 'a:1:{s:16:"sidebars_widgets";a:2:{s:4:"time";i:1425739550;s:4:"data";a:2:{s:19:"wp_inactive_widgets";a:0:{}s:9:"sidebar-1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}}}}', 'yes'),
 (100, 'current_theme', 'NewTek', 'yes'),
-(101, 'theme_mods_newtek', 'a:1:{i:0;b:0;}', 'yes'),
+(101, 'theme_mods_newtek', 'a:2:{i:0;b:0;s:18:"nav_menu_locations";a:1:{s:11:"header-menu";i:2;}}', 'yes'),
 (102, 'theme_switched', '', 'yes'),
 (103, '_transient_timeout_feed_ac0b00fe65abe10e0c5b588f3ed8c7ca', '1425782751', 'no');
 INSERT INTO `iii5_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -1340,7 +1441,9 @@ INSERT INTO `iii5_options` (`option_id`, `option_name`, `option_value`, `autoloa
 (116, 'akismet_strictness', '0', 'yes'),
 (117, 'akismet_show_user_comments_approved', '1', 'yes'),
 (118, 'wordpress_api_key', 'cbd7f6887f06', 'yes'),
-(119, '_transient_random_seed', '404e12575763a36e064e64cc87e1b09d', 'yes');
+(119, '_transient_random_seed', '404e12575763a36e064e64cc87e1b09d', 'yes'),
+(120, 'post_count', '1', 'yes'),
+(121, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:"auto_add";a:0:{}}', 'yes');
 
 -- --------------------------------------------------------
 
@@ -1356,14 +1459,39 @@ CREATE TABLE IF NOT EXISTS `iii5_postmeta` (
   PRIMARY KEY (`meta_id`),
   KEY `post_id` (`post_id`),
   KEY `meta_key` (`meta_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `iii5_postmeta`
 --
 
 INSERT INTO `iii5_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
-(1, 2, '_wp_page_template', 'default');
+(1, 2, '_wp_page_template', 'default'),
+(2, 4, '_menu_item_type', 'custom'),
+(3, 4, '_menu_item_menu_item_parent', '0'),
+(4, 4, '_menu_item_object_id', '4'),
+(5, 4, '_menu_item_object', 'custom'),
+(6, 4, '_menu_item_target', ''),
+(7, 4, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(8, 4, '_menu_item_xfn', ''),
+(9, 4, '_menu_item_url', 'http://localhost/III/blog/networks/'),
+(11, 5, '_menu_item_type', 'post_type'),
+(12, 5, '_menu_item_menu_item_parent', '0'),
+(13, 5, '_menu_item_object_id', '2'),
+(14, 5, '_menu_item_object', 'page'),
+(15, 5, '_menu_item_target', ''),
+(16, 5, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(17, 5, '_menu_item_xfn', ''),
+(18, 5, '_menu_item_url', ''),
+(19, 5, '_menu_item_orphaned', '1425748554'),
+(20, 6, '_menu_item_type', 'custom'),
+(21, 6, '_menu_item_menu_item_parent', '0'),
+(22, 6, '_menu_item_object_id', '6'),
+(23, 6, '_menu_item_object', 'custom'),
+(24, 6, '_menu_item_target', ''),
+(25, 6, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(26, 6, '_menu_item_xfn', ''),
+(27, 6, '_menu_item_url', 'http://localhost/III/');
 
 -- --------------------------------------------------------
 
@@ -1400,7 +1528,7 @@ CREATE TABLE IF NOT EXISTS `iii5_posts` (
   KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
   KEY `post_parent` (`post_parent`),
   KEY `post_author` (`post_author`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `iii5_posts`
@@ -1409,7 +1537,10 @@ CREATE TABLE IF NOT EXISTS `iii5_posts` (
 INSERT INTO `iii5_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 (1, 1, '2015-03-07 14:37:52', '2015-03-07 14:37:52', 'Welcome to <a href="http://localhost/III/blog/">Blog Sites</a>. This is your first post. Edit or delete it, then start blogging!', 'Hello world!', '', 'publish', 'open', 'open', '', 'hello-world', '', '', '2015-03-07 14:37:52', '2015-03-07 14:37:52', '', 0, 'http://localhost/III/blog/networks/?p=1', 0, 'post', '', 1),
 (2, 1, '2015-03-07 14:37:52', '2015-03-07 14:37:52', 'This is an example page. It''s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I''m a bike messenger by day, aspiring actor by night, and this is my blog. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin'' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href="http://localhost/III/blog/networks/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun!', 'Sample Page', '', 'publish', 'open', 'open', '', 'sample-page', '', '', '2015-03-07 14:37:52', '2015-03-07 14:37:52', '', 0, 'http://localhost/III/blog/networks/?page_id=2', 0, 'page', '', 0),
-(3, 1, '2015-03-07 14:45:45', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-03-07 14:45:45', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/networks/?p=3', 0, 'post', '', 0);
+(3, 1, '2015-03-07 14:45:45', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-03-07 14:45:45', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/networks/?p=3', 0, 'post', '', 0),
+(4, 1, '2015-03-07 17:16:13', '2015-03-07 17:16:13', '', 'Home', '', 'publish', 'open', 'open', '', 'home', '', '', '2015-03-07 17:16:13', '2015-03-07 17:16:13', '', 0, 'http://localhost/III/blog/networks/?p=4', 1, 'nav_menu_item', '', 0),
+(5, 1, '2015-03-07 17:15:54', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'open', 'open', '', '', '', '', '2015-03-07 17:15:54', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/networks/?p=5', 1, 'nav_menu_item', '', 0),
+(6, 1, '2015-03-07 17:16:13', '2015-03-07 17:16:13', '', 'III Members Page', '', 'publish', 'open', 'open', '', 'iii-members-page', '', '', '2015-03-07 17:16:13', '2015-03-07 17:16:13', '', 0, 'http://localhost/III/blog/networks/?p=6', 2, 'nav_menu_item', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1425,14 +1556,15 @@ CREATE TABLE IF NOT EXISTS `iii5_terms` (
   PRIMARY KEY (`term_id`),
   KEY `slug` (`slug`),
   KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `iii5_terms`
 --
 
 INSERT INTO `iii5_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
-(1, 'Uncategorized', 'uncategorized', 0);
+(1, 'Uncategorized', 'uncategorized', 0),
+(2, 'Menu 1', 'menu-1', 0);
 
 -- --------------------------------------------------------
 
@@ -1453,7 +1585,9 @@ CREATE TABLE IF NOT EXISTS `iii5_term_relationships` (
 --
 
 INSERT INTO `iii5_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
-(1, 1, 0);
+(1, 1, 0),
+(4, 2, 0),
+(6, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -1471,14 +1605,15 @@ CREATE TABLE IF NOT EXISTS `iii5_term_taxonomy` (
   PRIMARY KEY (`term_taxonomy_id`),
   UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
   KEY `taxonomy` (`taxonomy`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `iii5_term_taxonomy`
 --
 
 INSERT INTO `iii5_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
-(1, 1, 'category', '', 0, 1);
+(1, 1, 'category', '', 0, 1),
+(2, 2, 'nav_menu', '', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -1570,7 +1705,7 @@ CREATE TABLE IF NOT EXISTS `iii6_options` (
   `autoload` varchar(20) NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=120 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=122 ;
 
 --
 -- Dumping data for table `iii6_options`
@@ -1676,7 +1811,7 @@ INSERT INTO `iii6_options` (`option_id`, `option_name`, `option_value`, `autoloa
 (97, 'cron', 'a:2:{i:1425825956;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}s:7:"version";i:2;}', 'yes'),
 (99, 'theme_mods_twentyfifteen', 'a:1:{s:16:"sidebars_widgets";a:2:{s:4:"time";i:1425739560;s:4:"data";a:2:{s:19:"wp_inactive_widgets";a:0:{}s:9:"sidebar-1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}}}}', 'yes'),
 (100, 'current_theme', 'NewTek', 'yes'),
-(101, 'theme_mods_newtek', 'a:1:{i:0;b:0;}', 'yes'),
+(101, 'theme_mods_newtek', 'a:2:{i:0;b:0;s:18:"nav_menu_locations";a:1:{s:11:"header-menu";i:2;}}', 'yes'),
 (102, 'theme_switched', '', 'yes'),
 (103, '_transient_timeout_feed_ac0b00fe65abe10e0c5b588f3ed8c7ca', '1425782762', 'no');
 INSERT INTO `iii6_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -1698,7 +1833,9 @@ INSERT INTO `iii6_options` (`option_id`, `option_name`, `option_value`, `autoloa
 (116, 'akismet_strictness', '0', 'yes'),
 (117, 'akismet_show_user_comments_approved', '1', 'yes'),
 (118, 'wordpress_api_key', 'cbd7f6887f06', 'yes'),
-(119, '_transient_random_seed', 'f5d4a808f9456e82c6bf44b86a9bf3f7', 'yes');
+(119, '_transient_random_seed', 'f5d4a808f9456e82c6bf44b86a9bf3f7', 'yes'),
+(120, 'post_count', '1', 'yes'),
+(121, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:"auto_add";a:0:{}}', 'yes');
 
 -- --------------------------------------------------------
 
@@ -1714,14 +1851,39 @@ CREATE TABLE IF NOT EXISTS `iii6_postmeta` (
   PRIMARY KEY (`meta_id`),
   KEY `post_id` (`post_id`),
   KEY `meta_key` (`meta_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `iii6_postmeta`
 --
 
 INSERT INTO `iii6_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
-(1, 2, '_wp_page_template', 'default');
+(1, 2, '_wp_page_template', 'default'),
+(2, 4, '_menu_item_type', 'custom'),
+(3, 4, '_menu_item_menu_item_parent', '0'),
+(4, 4, '_menu_item_object_id', '4'),
+(5, 4, '_menu_item_object', 'custom'),
+(6, 4, '_menu_item_target', ''),
+(7, 4, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(8, 4, '_menu_item_xfn', ''),
+(9, 4, '_menu_item_url', 'http://localhost/III/blog/machinel/'),
+(11, 5, '_menu_item_type', 'post_type'),
+(12, 5, '_menu_item_menu_item_parent', '0'),
+(13, 5, '_menu_item_object_id', '2'),
+(14, 5, '_menu_item_object', 'page'),
+(15, 5, '_menu_item_target', ''),
+(16, 5, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(17, 5, '_menu_item_xfn', ''),
+(18, 5, '_menu_item_url', ''),
+(19, 5, '_menu_item_orphaned', '1425748591'),
+(20, 6, '_menu_item_type', 'custom'),
+(21, 6, '_menu_item_menu_item_parent', '0'),
+(22, 6, '_menu_item_object_id', '6'),
+(23, 6, '_menu_item_object', 'custom'),
+(24, 6, '_menu_item_target', ''),
+(25, 6, '_menu_item_classes', 'a:1:{i:0;s:0:"";}'),
+(26, 6, '_menu_item_xfn', ''),
+(27, 6, '_menu_item_url', 'http://localhost/III/');
 
 -- --------------------------------------------------------
 
@@ -1758,7 +1920,7 @@ CREATE TABLE IF NOT EXISTS `iii6_posts` (
   KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
   KEY `post_parent` (`post_parent`),
   KEY `post_author` (`post_author`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `iii6_posts`
@@ -1767,7 +1929,10 @@ CREATE TABLE IF NOT EXISTS `iii6_posts` (
 INSERT INTO `iii6_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 (1, 1, '2015-03-07 14:39:14', '2015-03-07 14:39:14', 'Welcome to <a href="http://localhost/III/blog/">Blog Sites</a>. This is your first post. Edit or delete it, then start blogging!', 'Hello world!', '', 'publish', 'open', 'open', '', 'hello-world', '', '', '2015-03-07 14:39:14', '2015-03-07 14:39:14', '', 0, 'http://localhost/III/blog/machinel/?p=1', 0, 'post', '', 1),
 (2, 1, '2015-03-07 14:39:14', '2015-03-07 14:39:14', 'This is an example page. It''s different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:\n\n<blockquote>Hi there! I''m a bike messenger by day, aspiring actor by night, and this is my blog. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin'' caught in the rain.)</blockquote>\n\n...or something like this:\n\n<blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>\n\nAs a new WordPress user, you should go to <a href="http://localhost/III/blog/machinel/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun!', 'Sample Page', '', 'publish', 'open', 'open', '', 'sample-page', '', '', '2015-03-07 14:39:14', '2015-03-07 14:39:14', '', 0, 'http://localhost/III/blog/machinel/?page_id=2', 0, 'page', '', 0),
-(3, 1, '2015-03-07 14:45:56', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-03-07 14:45:56', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/machinel/?p=3', 0, 'post', '', 0);
+(3, 1, '2015-03-07 14:45:56', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-03-07 14:45:56', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/machinel/?p=3', 0, 'post', '', 0),
+(4, 1, '2015-03-07 17:16:53', '2015-03-07 17:16:53', '', 'Home', '', 'publish', 'open', 'open', '', 'home', '', '', '2015-03-07 17:16:53', '2015-03-07 17:16:53', '', 0, 'http://localhost/III/blog/machinel/?p=4', 1, 'nav_menu_item', '', 0),
+(5, 1, '2015-03-07 17:16:30', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'open', 'open', '', '', '', '', '2015-03-07 17:16:30', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/machinel/?p=5', 1, 'nav_menu_item', '', 0),
+(6, 1, '2015-03-07 17:16:54', '2015-03-07 17:16:54', '', 'III Members Page', '', 'publish', 'open', 'open', '', 'iii-members-page', '', '', '2015-03-07 17:16:54', '2015-03-07 17:16:54', '', 0, 'http://localhost/III/blog/machinel/?p=6', 2, 'nav_menu_item', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1783,14 +1948,15 @@ CREATE TABLE IF NOT EXISTS `iii6_terms` (
   PRIMARY KEY (`term_id`),
   KEY `slug` (`slug`),
   KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `iii6_terms`
 --
 
 INSERT INTO `iii6_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
-(1, 'Uncategorized', 'uncategorized', 0);
+(1, 'Uncategorized', 'uncategorized', 0),
+(2, 'Menu 1', 'menu-1', 0);
 
 -- --------------------------------------------------------
 
@@ -1811,7 +1977,9 @@ CREATE TABLE IF NOT EXISTS `iii6_term_relationships` (
 --
 
 INSERT INTO `iii6_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
-(1, 1, 0);
+(1, 1, 0),
+(4, 2, 0),
+(6, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -1829,14 +1997,15 @@ CREATE TABLE IF NOT EXISTS `iii6_term_taxonomy` (
   PRIMARY KEY (`term_taxonomy_id`),
   UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
   KEY `taxonomy` (`taxonomy`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `iii6_term_taxonomy`
 --
 
 INSERT INTO `iii6_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
-(1, 1, 'category', '', 0, 1);
+(1, 1, 'category', '', 0, 1),
+(2, 2, 'nav_menu', '', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -1867,7 +2036,7 @@ CREATE TABLE IF NOT EXISTS `iiiblogs` (
 --
 
 INSERT INTO `iiiblogs` (`blog_id`, `site_id`, `domain`, `path`, `registered`, `last_updated`, `public`, `archived`, `mature`, `spam`, `deleted`, `lang_id`) VALUES
-(1, 1, 'localhost', '/III/blog/', '2015-03-07 19:42:46', '2015-03-07 15:13:59', 1, 0, 0, 0, 0, 0),
+(1, 1, 'localhost', '/III/blog/', '2015-03-07 19:42:46', '2015-03-07 17:04:34', 1, 0, 0, 0, 0, 0),
 (2, 1, 'localhost', '/III/blog/android/', '2015-03-07 19:46:44', '2015-03-07 14:17:04', 1, 0, 0, 0, 0, 0),
 (3, 1, 'localhost', '/III/blog/web/', '2015-03-07 20:05:33', '2015-03-07 14:35:51', 1, 0, 0, 0, 0, 0),
 (4, 1, 'localhost', '/III/blog/programming/', '2015-03-07 20:06:39', '2015-03-07 14:37:04', 1, 0, 0, 0, 0, 0),
@@ -1978,7 +2147,7 @@ CREATE TABLE IF NOT EXISTS `iiioptions` (
   `autoload` varchar(20) NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=159 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=163 ;
 
 --
 -- Dumping data for table `iiioptions`
@@ -2080,9 +2249,9 @@ INSERT INTO `iiioptions` (`option_id`, `option_name`, `option_value`, `autoload`
 (93, 'widget_archives', 'a:2:{i:2;a:3:{s:5:"title";s:0:"";s:5:"count";i:0;s:8:"dropdown";i:0;}s:12:"_multiwidget";i:1;}', 'yes'),
 (94, 'widget_meta', 'a:2:{i:3;a:1:{s:5:"title";s:0:"";}s:12:"_multiwidget";i:1;}', 'yes'),
 (95, 'sidebars_widgets', 'a:4:{s:19:"wp_inactive_widgets";a:1:{i:0;s:8:"search-2";}s:12:"home_right_1";a:5:{i:0;s:14:"recent-posts-2";i:1;s:17:"recent-comments-2";i:2;s:6:"meta-3";i:3;s:10:"archives-2";i:4;s:12:"categories-2";}s:14:"footer-sidebar";a:1:{i:0;s:10:"calendar-2";}s:13:"array_version";i:3;}', 'yes'),
-(96, 'cron', 'a:5:{i:1425745204;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1425745233;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1425757860;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1425780910;a:1:{s:21:"update_network_counts";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}s:7:"version";i:2;}', 'yes'),
+(96, 'cron', 'a:6:{i:1425757860;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1425780910;a:1:{s:21:"update_network_counts";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1425788404;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1425831633;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1425833873;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}s:7:"version";i:2;}', 'yes'),
 (98, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:1:{i:0;O:8:"stdClass":10:{s:8:"response";s:6:"latest";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.1.1.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.1.1.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.1.1-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.1.1-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.1.1";s:7:"version";s:5:"4.1.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.1";s:15:"partial_version";s:0:"";}}s:12:"last_checked";i:1425737506;s:15:"version_checked";s:5:"4.1.1";s:12:"translations";a:0:{}}', 'yes'),
-(99, '_transient_random_seed', '9e8cef1e8adfe2104854a2c4bd366898', 'yes'),
+(99, '_transient_random_seed', 'c7370d896b183cffaa5c93f192ec9450', 'yes'),
 (100, '_site_transient_update_plugins', 'O:8:"stdClass":5:{s:12:"last_checked";i:1425737519;s:7:"checked";a:2:{s:19:"akismet/akismet.php";s:5:"3.0.4";s:9:"hello.php";s:3:"1.6";}s:8:"response";a:0:{}s:12:"translations";a:0:{}s:9:"no_update";a:2:{s:19:"akismet/akismet.php";O:8:"stdClass":6:{s:2:"id";s:2:"15";s:4:"slug";s:7:"akismet";s:6:"plugin";s:19:"akismet/akismet.php";s:11:"new_version";s:5:"3.0.4";s:3:"url";s:38:"https://wordpress.org/plugins/akismet/";s:7:"package";s:56:"https://downloads.wordpress.org/plugin/akismet.3.0.4.zip";}s:9:"hello.php";O:8:"stdClass":6:{s:2:"id";s:4:"3564";s:4:"slug";s:11:"hello-dolly";s:6:"plugin";s:9:"hello.php";s:11:"new_version";s:3:"1.6";s:3:"url";s:42:"https://wordpress.org/plugins/hello-dolly/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip";}}}', 'yes'),
 (105, '_site_transient_timeout_browser_b6806b53c0794983da79881865b21633', '1426263624', 'yes'),
 (106, '_site_transient_browser_b6806b53c0794983da79881865b21633', 'a:9:{s:8:"platform";s:7:"Windows";s:4:"name";s:6:"Chrome";s:7:"version";s:13:"40.0.2214.115";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
@@ -2107,7 +2276,7 @@ INSERT INTO `iiioptions` (`option_id`, `option_name`, `option_value`, `autoload`
 (154, '_site_transient_timeout_theme_roots', '1425739303', 'yes'),
 (155, '_site_transient_theme_roots', 'a:4:{s:6:"newtek";s:7:"/themes";s:13:"twentyfifteen";s:7:"/themes";s:14:"twentyfourteen";s:7:"/themes";s:14:"twentythirteen";s:7:"/themes";}', 'yes'),
 (156, 'rewrite_rules', 'a:70:{s:47:"category/(.+?)/feed/(feed|rdf|rss|rss2|atom)/?$";s:52:"index.php?category_name=$matches[1]&feed=$matches[2]";s:42:"category/(.+?)/(feed|rdf|rss|rss2|atom)/?$";s:52:"index.php?category_name=$matches[1]&feed=$matches[2]";s:35:"category/(.+?)/page/?([0-9]{1,})/?$";s:53:"index.php?category_name=$matches[1]&paged=$matches[2]";s:17:"category/(.+?)/?$";s:35:"index.php?category_name=$matches[1]";s:44:"tag/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?tag=$matches[1]&feed=$matches[2]";s:39:"tag/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?tag=$matches[1]&feed=$matches[2]";s:32:"tag/([^/]+)/page/?([0-9]{1,})/?$";s:43:"index.php?tag=$matches[1]&paged=$matches[2]";s:14:"tag/([^/]+)/?$";s:25:"index.php?tag=$matches[1]";s:45:"type/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:50:"index.php?post_format=$matches[1]&feed=$matches[2]";s:40:"type/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:50:"index.php?post_format=$matches[1]&feed=$matches[2]";s:33:"type/([^/]+)/page/?([0-9]{1,})/?$";s:51:"index.php?post_format=$matches[1]&paged=$matches[2]";s:15:"type/([^/]+)/?$";s:33:"index.php?post_format=$matches[1]";s:48:".*wp-(atom|rdf|rss|rss2|feed|commentsrss2)\\.php$";s:18:"index.php?feed=old";s:20:".*wp-app\\.php(/.*)?$";s:19:"index.php?error=403";s:18:".*wp-register.php$";s:23:"index.php?register=true";s:32:"feed/(feed|rdf|rss|rss2|atom)/?$";s:27:"index.php?&feed=$matches[1]";s:27:"(feed|rdf|rss|rss2|atom)/?$";s:27:"index.php?&feed=$matches[1]";s:20:"page/?([0-9]{1,})/?$";s:28:"index.php?&paged=$matches[1]";s:41:"comments/feed/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?&feed=$matches[1]&withcomments=1";s:36:"comments/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?&feed=$matches[1]&withcomments=1";s:44:"search/(.+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:40:"index.php?s=$matches[1]&feed=$matches[2]";s:39:"search/(.+)/(feed|rdf|rss|rss2|atom)/?$";s:40:"index.php?s=$matches[1]&feed=$matches[2]";s:32:"search/(.+)/page/?([0-9]{1,})/?$";s:41:"index.php?s=$matches[1]&paged=$matches[2]";s:14:"search/(.+)/?$";s:23:"index.php?s=$matches[1]";s:52:"blog/author/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:50:"index.php?author_name=$matches[1]&feed=$matches[2]";s:47:"blog/author/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:50:"index.php?author_name=$matches[1]&feed=$matches[2]";s:40:"blog/author/([^/]+)/page/?([0-9]{1,})/?$";s:51:"index.php?author_name=$matches[1]&paged=$matches[2]";s:22:"blog/author/([^/]+)/?$";s:33:"index.php?author_name=$matches[1]";s:74:"blog/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/feed/(feed|rdf|rss|rss2|atom)/?$";s:80:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&feed=$matches[4]";s:69:"blog/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/(feed|rdf|rss|rss2|atom)/?$";s:80:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&feed=$matches[4]";s:62:"blog/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/page/?([0-9]{1,})/?$";s:81:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&paged=$matches[4]";s:44:"blog/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/?$";s:63:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]";s:61:"blog/([0-9]{4})/([0-9]{1,2})/feed/(feed|rdf|rss|rss2|atom)/?$";s:64:"index.php?year=$matches[1]&monthnum=$matches[2]&feed=$matches[3]";s:56:"blog/([0-9]{4})/([0-9]{1,2})/(feed|rdf|rss|rss2|atom)/?$";s:64:"index.php?year=$matches[1]&monthnum=$matches[2]&feed=$matches[3]";s:49:"blog/([0-9]{4})/([0-9]{1,2})/page/?([0-9]{1,})/?$";s:65:"index.php?year=$matches[1]&monthnum=$matches[2]&paged=$matches[3]";s:31:"blog/([0-9]{4})/([0-9]{1,2})/?$";s:47:"index.php?year=$matches[1]&monthnum=$matches[2]";s:48:"blog/([0-9]{4})/feed/(feed|rdf|rss|rss2|atom)/?$";s:43:"index.php?year=$matches[1]&feed=$matches[2]";s:43:"blog/([0-9]{4})/(feed|rdf|rss|rss2|atom)/?$";s:43:"index.php?year=$matches[1]&feed=$matches[2]";s:36:"blog/([0-9]{4})/page/?([0-9]{1,})/?$";s:44:"index.php?year=$matches[1]&paged=$matches[2]";s:18:"blog/([0-9]{4})/?$";s:26:"index.php?year=$matches[1]";s:63:"blog/[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:73:"blog/[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:93:"blog/[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:88:"blog/[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:88:"blog/[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:62:"blog/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/([^/]+)/trackback/?$";s:85:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&name=$matches[4]&tb=1";s:82:"blog/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:97:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&name=$matches[4]&feed=$matches[5]";s:77:"blog/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:97:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&name=$matches[4]&feed=$matches[5]";s:70:"blog/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/([^/]+)/page/?([0-9]{1,})/?$";s:98:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&name=$matches[4]&paged=$matches[5]";s:77:"blog/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/([^/]+)/comment-page-([0-9]{1,})/?$";s:98:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&name=$matches[4]&cpage=$matches[5]";s:62:"blog/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/([^/]+)(/[0-9]+)?/?$";s:97:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&name=$matches[4]&page=$matches[5]";s:52:"blog/[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:62:"blog/[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:82:"blog/[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:77:"blog/[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:77:"blog/[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:69:"blog/([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/comment-page-([0-9]{1,})/?$";s:81:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&cpage=$matches[4]";s:56:"blog/([0-9]{4})/([0-9]{1,2})/comment-page-([0-9]{1,})/?$";s:65:"index.php?year=$matches[1]&monthnum=$matches[2]&cpage=$matches[3]";s:43:"blog/([0-9]{4})/comment-page-([0-9]{1,})/?$";s:44:"index.php?year=$matches[1]&cpage=$matches[2]";s:27:".?.+?/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:37:".?.+?/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:57:".?.+?/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:".?.+?/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:".?.+?/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:20:"(.?.+?)/trackback/?$";s:35:"index.php?pagename=$matches[1]&tb=1";s:40:"(.?.+?)/feed/(feed|rdf|rss|rss2|atom)/?$";s:47:"index.php?pagename=$matches[1]&feed=$matches[2]";s:35:"(.?.+?)/(feed|rdf|rss|rss2|atom)/?$";s:47:"index.php?pagename=$matches[1]&feed=$matches[2]";s:28:"(.?.+?)/page/?([0-9]{1,})/?$";s:48:"index.php?pagename=$matches[1]&paged=$matches[2]";s:35:"(.?.+?)/comment-page-([0-9]{1,})/?$";s:48:"index.php?pagename=$matches[1]&cpage=$matches[2]";s:20:"(.?.+?)(/[0-9]+)?/?$";s:47:"index.php?pagename=$matches[1]&page=$matches[2]";}', 'yes'),
-(158, 'post_count', '0', 'yes');
+(158, 'post_count', '1', 'yes');
 
 -- --------------------------------------------------------
 
@@ -2123,7 +2292,7 @@ CREATE TABLE IF NOT EXISTS `iiipostmeta` (
   PRIMARY KEY (`meta_id`),
   KEY `post_id` (`post_id`),
   KEY `meta_key` (`meta_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `iiipostmeta`
@@ -2158,7 +2327,9 @@ INSERT INTO `iiipostmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (27, 6, '_menu_item_url', 'http://localhost/III/blog/../'),
 (29, 1, '_wp_trash_meta_status', 'publish'),
 (30, 1, '_wp_trash_meta_time', '1425741239'),
-(31, 1, '_wp_trash_meta_comments_status', 'a:1:{i:1;s:1:"1";}');
+(31, 1, '_wp_trash_meta_comments_status', 'a:1:{i:1;s:1:"1";}'),
+(32, 8, '_edit_lock', '1425747736:1'),
+(33, 8, '_edit_last', '1');
 
 -- --------------------------------------------------------
 
@@ -2195,7 +2366,7 @@ CREATE TABLE IF NOT EXISTS `iiiposts` (
   KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
   KEY `post_parent` (`post_parent`),
   KEY `post_author` (`post_author`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `iiiposts`
@@ -2208,7 +2379,9 @@ INSERT INTO `iiiposts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (4, 1, '2015-03-07 09:06:29', '2015-03-07 09:06:29', '', 'Home', '', 'publish', 'open', 'open', '', 'home', '', '', '2015-03-07 09:12:47', '2015-03-07 09:12:47', '', 0, 'http://localhost/III/blog/?p=4', 1, 'nav_menu_item', '', 0),
 (5, 1, '2015-03-07 09:05:19', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'open', 'open', '', '', '', '', '2015-03-07 09:05:19', '0000-00-00 00:00:00', '', 0, 'http://localhost/III/blog/?p=5', 1, 'nav_menu_item', '', 0),
 (6, 1, '2015-03-07 09:06:31', '2015-03-07 09:06:31', '', 'III MembersPage', 'Member Page', 'publish', 'open', 'open', '', 'iii-memberspage', '', '', '2015-03-07 09:12:47', '2015-03-07 09:12:47', '', 0, 'http://localhost/III/blog/?p=6', 2, 'nav_menu_item', '', 0),
-(7, 1, '2015-03-07 20:43:59', '2015-03-07 15:13:59', 'Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!', 'Hello world!', '', 'inherit', 'open', 'open', '', '1-revision-v1', '', '', '2015-03-07 20:43:59', '2015-03-07 15:13:59', '', 1, 'http://localhost/III/blog/blog/2015/03/07/1-revision-v1/', 0, 'revision', '', 0);
+(7, 1, '2015-03-07 20:43:59', '2015-03-07 15:13:59', 'Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!', 'Hello world!', '', 'inherit', 'open', 'open', '', '1-revision-v1', '', '', '2015-03-07 20:43:59', '2015-03-07 15:13:59', '', 1, 'http://localhost/III/blog/blog/2015/03/07/1-revision-v1/', 0, 'revision', '', 0),
+(8, 1, '2015-03-07 22:34:34', '2015-03-07 17:04:34', '<a title="Android Blog" href="http://localhost/III/blog/android/"><strong>ANDROID Blog\r\n\r\n</strong></a><b><a title="Web Blog" href="http://localhost/III/blog/web/">WEB Blog\r\n</a></b>\r\n\r\n<a title="Networks lab" href="http://localhost/III/blog/networks/"><strong>NETWORKS Blog</strong></a>\r\n\r\n<a title="Programming Blog" href="http://localhost/III/blog/programming/"><strong>PROGRAMMING Blog</strong></a>\r\n\r\n<a title="MachL blog" href="http://localhost/III/blog/android/"><b>MACHL Blog</b></a>', 'Blog Lists', '', 'publish', 'open', 'open', '', 'blog-lists', '', '', '2015-03-07 22:34:34', '2015-03-07 17:04:34', '', 0, 'http://localhost/III/blog/?p=8', 0, 'post', '', 0),
+(9, 1, '2015-03-07 22:34:34', '2015-03-07 17:04:34', '<a title="Android Blog" href="http://localhost/III/blog/android/"><strong>ANDROID Blog\r\n\r\n</strong></a><b><a title="Web Blog" href="http://localhost/III/blog/web/">WEB Blog\r\n</a></b>\r\n\r\n<a title="Networks lab" href="http://localhost/III/blog/networks/"><strong>NETWORKS Blog</strong></a>\r\n\r\n<a title="Programming Blog" href="http://localhost/III/blog/programming/"><strong>PROGRAMMING Blog</strong></a>\r\n\r\n<a title="MachL blog" href="http://localhost/III/blog/android/"><b>MACHL Blog</b></a>', 'Blog Lists', '', 'inherit', 'open', 'open', '', '8-revision-v1', '', '', '2015-03-07 22:34:34', '2015-03-07 17:04:34', '', 8, 'http://localhost/III/blog/blog/2015/03/07/8-revision-v1/', 0, 'revision', '', 0);
 
 -- --------------------------------------------------------
 
@@ -2297,14 +2470,14 @@ CREATE TABLE IF NOT EXISTS `iiisitemeta` (
   PRIMARY KEY (`meta_id`),
   KEY `meta_key` (`meta_key`),
   KEY `site_id` (`site_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
 
 --
 -- Dumping data for table `iiisitemeta`
 --
 
 INSERT INTO `iiisitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUES
-(1, 1, 'site_name', 'Blog Sites'),
+(1, 1, 'site_name', 'III'),
 (2, 1, 'admin_email', 'sk851831@gmail.com'),
 (3, 1, 'admin_user_id', '1'),
 (4, 1, 'registration', 'none'),
@@ -2326,8 +2499,8 @@ INSERT INTO `iiisitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUE
 (20, 1, 'initial_db_version', '30133'),
 (21, 1, 'active_sitewide_plugins', 'a:1:{s:19:"akismet/akismet.php";i:1425740117;}'),
 (22, 1, 'WPLANG', ''),
-(24, 1, '_site_transient_update_plugins', 'O:8:"stdClass":4:{s:12:"last_checked";i:1425741095;s:8:"response";a:0:{}s:12:"translations";a:0:{}s:9:"no_update";a:2:{s:19:"akismet/akismet.php";O:8:"stdClass":6:{s:2:"id";s:2:"15";s:4:"slug";s:7:"akismet";s:6:"plugin";s:19:"akismet/akismet.php";s:11:"new_version";s:5:"3.0.4";s:3:"url";s:38:"https://wordpress.org/plugins/akismet/";s:7:"package";s:56:"https://downloads.wordpress.org/plugin/akismet.3.0.4.zip";}s:9:"hello.php";O:8:"stdClass":6:{s:2:"id";s:4:"3564";s:4:"slug";s:11:"hello-dolly";s:6:"plugin";s:9:"hello.php";s:11:"new_version";s:3:"1.6";s:3:"url";s:42:"https://wordpress.org/plugins/hello-dolly/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip";}}}'),
-(27, 1, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1425741098;s:7:"checked";a:4:{s:6:"newtek";s:5:"1.6.0";s:13:"twentyfifteen";s:3:"1.0";s:14:"twentyfourteen";s:3:"1.3";s:14:"twentythirteen";s:3:"1.4";}s:8:"response";a:0:{}s:12:"translations";a:0:{}}'),
+(24, 1, '_site_transient_update_plugins', 'O:8:"stdClass":4:{s:12:"last_checked";i:1425747437;s:8:"response";a:0:{}s:12:"translations";a:0:{}s:9:"no_update";a:2:{s:19:"akismet/akismet.php";O:8:"stdClass":6:{s:2:"id";s:2:"15";s:4:"slug";s:7:"akismet";s:6:"plugin";s:19:"akismet/akismet.php";s:11:"new_version";s:5:"3.0.4";s:3:"url";s:38:"https://wordpress.org/plugins/akismet/";s:7:"package";s:56:"https://downloads.wordpress.org/plugin/akismet.3.0.4.zip";}s:9:"hello.php";O:8:"stdClass":6:{s:2:"id";s:4:"3564";s:4:"slug";s:11:"hello-dolly";s:6:"plugin";s:9:"hello.php";s:11:"new_version";s:3:"1.6";s:3:"url";s:42:"https://wordpress.org/plugins/hello-dolly/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip";}}}'),
+(27, 1, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1425747441;s:7:"checked";a:4:{s:6:"newtek";s:5:"1.6.0";s:13:"twentyfifteen";s:3:"1.0";s:14:"twentyfourteen";s:3:"1.3";s:14:"twentythirteen";s:3:"1.4";}s:8:"response";a:0:{}s:12:"translations";a:0:{}}'),
 (28, 1, '_site_transient_timeout_browser_b6806b53c0794983da79881865b21633', '1426342511'),
 (29, 1, '_site_transient_browser_b6806b53c0794983da79881865b21633', 'a:9:{s:8:"platform";s:7:"Windows";s:4:"name";s:6:"Chrome";s:7:"version";s:13:"40.0.2214.115";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}'),
 (30, 1, 'user_count', '6'),
@@ -2344,9 +2517,9 @@ INSERT INTO `iiisitemeta` (`meta_id`, `site_id`, `meta_key`, `meta_value`) VALUE
 (44, 1, 'first_comment_author', ''),
 (45, 1, 'limited_email_domains', ''),
 (46, 1, 'banned_email_domains', ''),
-(48, 1, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:1:{i:0;O:8:"stdClass":10:{s:8:"response";s:6:"latest";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.1.1.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.1.1.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.1.1-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.1.1-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.1.1";s:7:"version";s:5:"4.1.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.1";s:15:"partial_version";s:0:"";}}s:12:"last_checked";i:1425741061;s:15:"version_checked";s:5:"4.1.1";s:12:"translations";a:0:{}}'),
-(49, 1, '_site_transient_timeout_theme_roots', '1425744431'),
-(50, 1, '_site_transient_theme_roots', 'a:4:{s:6:"newtek";s:7:"/themes";s:13:"twentyfifteen";s:7:"/themes";s:14:"twentyfourteen";s:7:"/themes";s:14:"twentythirteen";s:7:"/themes";}');
+(48, 1, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:1:{i:0;O:8:"stdClass":10:{s:8:"response";s:6:"latest";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.1.1.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.1.1.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.1.1-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.1.1-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.1.1";s:7:"version";s:5:"4.1.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.1";s:15:"partial_version";s:0:"";}}s:12:"last_checked";i:1425747429;s:15:"version_checked";s:5:"4.1.1";s:12:"translations";a:0:{}}'),
+(51, 1, '_site_transient_timeout_theme_roots', '1425749231'),
+(52, 1, '_site_transient_theme_roots', 'a:4:{s:6:"newtek";s:7:"/themes";s:13:"twentyfifteen";s:7:"/themes";s:14:"twentyfourteen";s:7:"/themes";s:14:"twentythirteen";s:7:"/themes";}');
 
 -- --------------------------------------------------------
 
@@ -2393,7 +2566,8 @@ CREATE TABLE IF NOT EXISTS `iiiterm_relationships` (
 INSERT INTO `iiiterm_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
 (1, 1, 0),
 (4, 2, 0),
-(6, 2, 0);
+(6, 2, 0),
+(8, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -2418,7 +2592,7 @@ CREATE TABLE IF NOT EXISTS `iiiterm_taxonomy` (
 --
 
 INSERT INTO `iiiterm_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
-(1, 1, 'category', '', 0, 0),
+(1, 1, 'category', '', 0, 1),
 (2, 2, 'nav_menu', '', 0, 2);
 
 -- --------------------------------------------------------
@@ -2435,7 +2609,7 @@ CREATE TABLE IF NOT EXISTS `iiiusermeta` (
   PRIMARY KEY (`umeta_id`),
   KEY `user_id` (`user_id`),
   KEY `meta_key` (`meta_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=132 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=144 ;
 
 --
 -- Dumping data for table `iiiusermeta`
@@ -2453,7 +2627,7 @@ INSERT INTO `iiiusermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (9, 1, 'show_admin_bar_front', 'true'),
 (10, 1, 'iiicapabilities', 'a:1:{s:13:"administrator";b:1;}'),
 (11, 1, 'iiiuser_level', '10'),
-(12, 1, 'dismissed_wp_pointers', 'wp360_locks,wp390_widgets'),
+(12, 1, 'dismissed_wp_pointers', 'wp360_locks,wp390_widgets,wp410_dfw'),
 (13, 1, 'show_welcome_panel', '1'),
 (15, 1, 'iiidashboard_quick_press_last_post_id', '3'),
 (17, 1, 'managenav-menuscolumnshidden', 'a:4:{i:0;s:11:"link-target";i:1;s:11:"css-classes";i:2;s:3:"xfn";i:3;s:11:"description";}'),
@@ -2547,7 +2721,19 @@ INSERT INTO `iiiusermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (127, 7, 'source_domain', 'localhost'),
 (128, 7, 'iii6_capabilities', 'a:1:{s:13:"administrator";b:1;}'),
 (129, 7, 'iii6_user_level', '10'),
-(131, 3, 'iii2_dashboard_quick_press_last_post_id', '4');
+(131, 3, 'iii2_dashboard_quick_press_last_post_id', '4'),
+(132, 1, 'iiiuser-settings', 'wplink=0'),
+(133, 1, 'iiiuser-settings-time', '1425747872'),
+(134, 1, 'iii2_user-settings', 'wplink=0'),
+(135, 1, 'iii2_user-settings-time', '1425748155'),
+(136, 1, 'iii3_user-settings', 'wplink=0'),
+(137, 1, 'iii3_user-settings-time', '1425748372'),
+(138, 1, 'iii4_user-settings', 'wplink=0'),
+(139, 1, 'iii4_user-settings-time', '1425748420'),
+(140, 1, 'iii5_user-settings', 'wplink=0'),
+(141, 1, 'iii5_user-settings-time', '1425748543'),
+(142, 1, 'iii6_user-settings', 'wplink=0'),
+(143, 1, 'iii6_user-settings-time', '1425748580');
 
 -- --------------------------------------------------------
 
