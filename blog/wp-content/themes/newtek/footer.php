@@ -11,5 +11,5 @@
 <div class="toplink"><a href="#"><?php _e('Back to Top &#8593;', 'newtek'); ?></a></div>
 </div>
 </div>
-<?php wp_footer(); ?>
+<?php wp_footer();?>
 </body></html>
