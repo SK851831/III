@@ -1,7 +1,10 @@
 <?php include_once 'includes/session.php'; ?>
 <!DOCTYPE html>
 <html>
-    <?php include_once('includes/head.php'); ?>
+    <?php include_once('includes/head.php'); 
+            include('time.php');
+            $sql = dbConnect();
+    ?>
     <body class="skin-blue">
         <?php include_once('includes/header.php'); ?>
         <div class="wrapper row-offcanvas row-offcanvas-left">
@@ -174,89 +177,68 @@
                                             <div class="timeline-item">
                                                 <h1 class="timeline-header"><a href="#">Status Feed</a></h1>
                                                 <div class="timeline-body">
-                                                    <textarea class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                                <form action="testing.php" method="post">
+                                                    <textarea name="content" class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                                 <div class='timeline-footer'>
                                                     <button type="submit" class="btn bg-green btn-xs">Post</button>
+                                                </div>
+                                                </form>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="time-label">
                                             <span class="bg-red">
-                                                10 Feb. 2014
+                                            <?php 
+                                                $time = date("Y-m-d ", time());
+                                                echo $time;
+
+                                               ?>
                                             </span>
                                         </li>
                                         <!-- /.timeline-label -->
                                         <!-- timeline item -->
-                                        <li>
-                                        <!-- timeline icon -->
-                                            <i class="fa fa-comments-o bg-blue"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o" ></i> 12:05</span>
-                                                <h1 class="timeline-header"><a href="#">User 1</a></h1>
-                                                <div class="timeline-body">
-                                                    <p>aksdlkdaslkadskasdlkdaslkdaslaskl</p>
+                                       
+                                        <?php
+                                            $styles = array('fa fa-comments-o bg-blue','fa fa-comments bg-yellow','fa fa-comments bg-red');
+                                            $id = $system->id; 
+                                            $query = mysqli_query($sql,"SELECT * FROM iii_newsfeed.$id ORDER BY posted_on DESC");
+                                            while($row = mysqli_fetch_assoc($query))
+                                            {
+                                                $post_id = $row['pid'];
+                                                $query2 = mysqli_query($sql,"SELECT * FROM iii_posts.posts WHERE pid= '$post_id'");
+                                                $result2 = mysqli_fetch_array($query2);
+                                                $user_id = $result2['uid'];
+                                                $name_query = mysqli_query($sql,"SELECT * FROM iii.users WHERE id='$user_id' ");
+                                                $name_query = mysqli_fetch_array($name_query);
+                                                $name = $name_query['username'];
+                                                $i = rand(0,2);
+                                                $time = $result2['posted_on'];
+                                                $posted = time1($time);
+
+
+                                            ?>
+
+                                                 <li>
+                                            <!-- timeline icon -->
+                                                <i class="<?php echo $styles[$i] ?>"></i>
+                                                <div class="timeline-item">
+                                                    <span class="time" style="font-size:12px;"><i class="fa fa-clock-o" ></i> <?php echo $posted; ?></span>
+                                                    <h1 class="timeline-header"  style="font-size:25px;"><a href="#"><?php echo $name ?></a></h1>
+                                                    <div class="timeline-body">
+                                                        <p><?php echo $result2['post_content'] ?></p>
+                                                    </div>
+                                                    <div class='timeline-footer'>
+                                                    </div>
                                                 </div>
-                                                <div class='timeline-footer'>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- END timeline item -->
-                                        <!-- timeline item -->
-                                        <li>
-                                            <i class="fa fa-comments bg-yellow"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-                                                <h3 class="timeline-header"><a href="#">User 2</a> commented on your post</h3>
-                                                <div class="timeline-body">
-                                                    Take me to your leader!
-                                                    Switzerland is small and neutral!
-                                                    We are more like Germany, ambitious and misunderstood!
-                                                </div>
-                                                <div class="timeline-footer">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- END timeline item -->
-                                        <!-- timeline item -->
-                                        <li>
-                                            <i class="fa fa-camera bg-purple"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-                                                <h3 class="timeline-header"><a href="#">User 3</a> uploaded new photos</h3>
-                                                <div class="timeline-body">
-                                                    <img src="http://placehold.it/150x100" alt="..." class='margin' />
-                                                    <img src="http://placehold.it/150x100" alt="..." class='margin'/>
-                                                    <img src="http://placehold.it/150x100" alt="..." class='margin'/>
-                                                    <img src="http://placehold.it/150x100" alt="..." class='margin'/>
-                                                </div>
-                                                <div class="timeline-footer">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- END timeline item -->
-                                        <!-- timeline item -->
-                                        <li>
-                                            <i class="fa fa-user bg-aqua"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-                                                <h3 class="timeline-header no-border"><a href="#">User 4</a> accepted your friend request</h3>
-                                            </div>
-                                        </li>
-                                        <!-- END timeline item -->
-                                        <!-- timeline item -->
-                                        <li>
-                                            <i class="fa fa-video-camera bg-maroon"></i>
-                                            <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i> 5 days ago</span>
-                                                <h3 class="timeline-header"><a href="#">User 5</a> shared a video</h3>
-                                                <div class="timeline-body">
-                                                    <iframe width="300" height="169" src="//www.youtube.com/embed/fLe_qO4AE-M" frameborder="0" allowfullscreen></iframe>
-                                                </div>
-                                                <div class="timeline-footer">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- END timeline item -->
+                                            </li>
+                                            <!-- END timeline item -->
+                                            <!-- timeline item -->
+
+                                        <?php
+                                             }
+                                        ?>
+
+                                       
                                     </ul>
                                 </div>
                             </div>

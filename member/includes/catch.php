@@ -6,7 +6,7 @@ require_once('../dbConnect.php');
  $sql = dbConnect();
 class profile
 {
-	var $title,$uemail,$authen,$profilepic,$team,$uname;
+	var $id,$title,$uemail,$authen,$profilepic,$team,$uname;
 	
 	public function db(){
 		$con = $GLOBALS['sql'];
@@ -26,6 +26,7 @@ class profile
 	{
 		$col=$this->db();
  		$this->uemail=$col['email'];
+ 		$this->id = $col['id'];
  		$this->uname=$col['username'];
  		$this->authen=$col['auth'];	
  		$this->profilepic=$col['profilepic'];
