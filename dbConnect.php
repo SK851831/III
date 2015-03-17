@@ -2,7 +2,7 @@
 
 	function dbConnect()
 	{
-		$sql = mysqli_connect('localhost' ,'root','delta2345','iii');
+		$sql = mysqli_connect('localhost' ,'login','test','iii');
 		return $sql;
 
 	}

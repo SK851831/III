@@ -164,25 +164,18 @@
                                     <i class="fa fa-newspaper-o"></i>
                                     <h3 class="box-title">TimeLine</h3>
                                     <ul class="timeline">
-                                        <!-- timeline time label -->
-                                        <li class="time-label">
-                                            <span class="bg-red">
-                                                10 Feb. 2014
-                                            </span>
-                                        </li>
-                                        <!-- /.timeline-label -->
                                         <!-- timeline item -->
                                         <li>
                                             <i class="fa fa-futbol-o fa-spin bg-blue"></i>
                                             <div class="timeline-item">
                                                 <h1 class="timeline-header"><a href="#">Status Feed</a></h1>
                                                 <div class="timeline-body">
-                                                <form action="testing.php" method="post">
-                                                    <textarea name="content" class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                                                <div class='timeline-footer'>
-                                                    <button type="submit" class="btn bg-green btn-xs">Post</button>
-                                                </div>
-                                                </form>
+                                                    <form action="testing.php" method="post">
+                                                        <textarea name="content" class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                                        <div class='timeline-footer'>
+                                                            <button type="submit" class="btn bg-green btn-xs">Post</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </li>
@@ -202,6 +195,7 @@
                                             $styles = array('fa fa-comments-o bg-blue','fa fa-comments bg-yellow','fa fa-comments bg-red');
                                             $id = $system->id; 
                                             $query = mysqli_query($sql,"SELECT * FROM iii_newsfeed.$id ORDER BY posted_on DESC");
+                                            if($query)
                                             while($row = mysqli_fetch_assoc($query))
                                             {
                                                 $post_id = $row['pid'];
@@ -408,7 +402,7 @@
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
+<?php include_once('includes/footer.php'); ?>
 
-<?php include_once('includes/footer.php'); ?>       
      </body>
 </html>

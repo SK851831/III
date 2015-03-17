@@ -117,7 +117,7 @@
 				$types = array('11','2','22','3','33','4','44','5','55','7','77');
 				return $types;
 			}
-			$types = array($a,11);
+			$types = array($a,77);
 			if(strlen($a)>1)
 			{
 				$t = substr($a,1);

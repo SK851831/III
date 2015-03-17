@@ -78,10 +78,11 @@
                             <div class="box box-info">
                                 <div class="box-header">
                                     <i class="fa fa-users"></i>
-                                    <h3 class="box-title">User Settings</h3>
+                                    <h2 class="box-title">User Settings</h2>
                                 </div>
                                 <div class="box-body">
-                                    
+                                    <h3 class="box-title">Add Admin</h3>
+                                    <
                                 </div>
                                 <div class="box-footer">
                                 </div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.1.6
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Mar 13, 2015 at 11:34 PM
--- Server version: 5.5.40-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.5
+-- Host: 127.0.0.1
+-- Generation Time: Mar 14, 2015 at 09:21 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `3`
+-- Table structure for table `30`
 --
 
-CREATE TABLE IF NOT EXISTS `3` (
+CREATE TABLE IF NOT EXISTS `30` (
   `uid` int(30) DEFAULT NULL,
   `comments` varchar(30) DEFAULT NULL,
   `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -35,10 +35,10 @@ CREATE TABLE IF NOT EXISTS `3` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `4`
+-- Table structure for table `31`
 --
 
-CREATE TABLE IF NOT EXISTS `4` (
+CREATE TABLE IF NOT EXISTS `31` (
   `uid` int(30) DEFAULT NULL,
   `comments` varchar(30) DEFAULT NULL,
   `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -47,10 +47,10 @@ CREATE TABLE IF NOT EXISTS `4` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `5`
+-- Table structure for table `32`
 --
 
-CREATE TABLE IF NOT EXISTS `5` (
+CREATE TABLE IF NOT EXISTS `32` (
   `uid` int(30) DEFAULT NULL,
   `comments` varchar(30) DEFAULT NULL,
   `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -59,70 +59,10 @@ CREATE TABLE IF NOT EXISTS `5` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `6`
+-- Table structure for table `33`
 --
 
-CREATE TABLE IF NOT EXISTS `6` (
-  `uid` int(30) DEFAULT NULL,
-  `comments` varchar(30) DEFAULT NULL,
-  `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `7`
---
-
-CREATE TABLE IF NOT EXISTS `7` (
-  `uid` int(30) DEFAULT NULL,
-  `comments` varchar(30) DEFAULT NULL,
-  `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `8`
---
-
-CREATE TABLE IF NOT EXISTS `8` (
-  `uid` int(30) DEFAULT NULL,
-  `comments` varchar(30) DEFAULT NULL,
-  `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `9`
---
-
-CREATE TABLE IF NOT EXISTS `9` (
-  `uid` int(30) DEFAULT NULL,
-  `comments` varchar(30) DEFAULT NULL,
-  `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `10`
---
-
-CREATE TABLE IF NOT EXISTS `10` (
-  `uid` int(30) DEFAULT NULL,
-  `comments` varchar(30) DEFAULT NULL,
-  `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `11`
---
-
-CREATE TABLE IF NOT EXISTS `11` (
+CREATE TABLE IF NOT EXISTS `33` (
   `uid` int(30) DEFAULT NULL,
   `comments` varchar(30) DEFAULT NULL,
   `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -135,30 +75,25 @@ CREATE TABLE IF NOT EXISTS `11` (
 --
 
 CREATE TABLE IF NOT EXISTS `posts` (
-  `pid` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(200) NOT NULL AUTO_INCREMENT,
   `post_content` varchar(2000) NOT NULL,
   `uid` int(11) NOT NULL,
   `auth` int(20) NOT NULL,
   `posted_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`pid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+  PRIMARY KEY (`pid`),
+  UNIQUE KEY `posted_on` (`posted_on`),
+  UNIQUE KEY `pid` (`pid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`pid`, `post_content`, `uid`, `auth`, `posted_on`) VALUES
-(1, 'hello', 12, 2, '2015-03-13 13:31:45'),
-(2, 'hello', 12, 2, '2015-03-13 13:32:38'),
-(3, 'hello', 12, 2, '2015-03-13 13:33:42'),
-(4, 'thee new text', 12, 2, '2015-03-13 13:33:52'),
-(5, 'hahahahahah', 12, 2, '2015-03-13 13:34:33'),
-(6, 'Hello this is the master admin reporting for duty ! :p', 1, 11, '2015-03-13 15:01:34'),
-(7, 'HAHAHAHAHAAHHA MASTER ADMIN', 1, 11, '2015-03-13 15:04:43'),
-(8, 'The new post Feature', 12, 2, '2015-03-13 15:10:25'),
-(9, 'hahhaha', 12, 2, '2015-03-13 15:10:44'),
-(10, 'Karthic was here', 5, 33, '2015-03-13 15:46:30'),
-(11, 'Karthic 2 was here<br><br>', 5, 33, '2015-03-13 15:47:20');
+(30, 'hi', 2, 2, '2015-03-14 15:21:57'),
+(31, 'test', 2, 2, '2015-03-14 15:23:13'),
+(32, 'hi<br><br>', 1, 11, '2015-03-14 15:37:38'),
+(33, 'cool', 9, 55, '2015-03-14 15:38:44');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

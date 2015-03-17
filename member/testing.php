@@ -1,6 +1,8 @@
 <?php
 	include('functions_core.php');
-	$content = ($_POST['content']?$_POST['content'] :null);
+	
+	$cont=explode("'",($_POST['content']?$_POST['content'] :null));
+	$content=implode("\'",$cont);
 	include('includes/session.php');
 	$uid=  $system->id;
 	$auth = $system->authen;

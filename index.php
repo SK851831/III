@@ -7,7 +7,8 @@ $sql = dbConnect();
 $output_form = false;
   // Clear the error message
   $error_msg = "";
-if (isset($_SESSION['email'])) {
+// If the session vars aren't set, try to set them with a cookie
+  if (isset($_SESSION['email'])) {
 	$home_url = 'member/index.php';
           header('Location: ' . $home_url);
 }
