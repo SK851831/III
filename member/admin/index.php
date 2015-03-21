@@ -144,7 +144,7 @@
                      <div class="callout callout-warning">
                                         <h4>Notify is Under Research!</h4>
                                         <p>Hit <kbd>F5</kbd> to recieve new notifics.!!!</p>
-                                    </div>
+                                    </div> 
                     <!-- Main row -->
                     <div class="row">
                         <!-- Left col -->

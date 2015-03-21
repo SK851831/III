@@ -2,6 +2,8 @@
 	include('functions_core.php');
 	
 	$cont=explode("'",($_POST['content']?$_POST['content'] :null));
+	if(empty($cont))
+		header('location: index.php');
 	$content=implode("\'",$cont);
 	include('includes/session.php');
 	$uid=  $system->id;
@@ -19,7 +21,7 @@
 		header('location: index.php');
 	}
 	else {
-		echo "cant";
+		header('location: index.php');
 	}
 	
 

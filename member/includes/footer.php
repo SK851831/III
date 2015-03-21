@@ -31,7 +31,7 @@
         
         <!-- AdminLTE for demo purposes -->
         <script src="js/AdminLTE/demo.js" type="text/javascript"></script>
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
                 function cl(){
                     document.getElementById('msg').innerHTML = "";
                 }
@@ -41,4 +41,4 @@
                 function cl3(){
                     document.getElementById('msg3').innerHTML = "";
                 }
-        </script>
+        </script> -->

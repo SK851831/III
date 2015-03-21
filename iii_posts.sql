@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2015 at 09:21 PM
+-- Generation Time: Mar 21, 2015 at 11:44 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -71,6 +71,66 @@ CREATE TABLE IF NOT EXISTS `33` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `34`
+--
+
+CREATE TABLE IF NOT EXISTS `34` (
+  `uid` int(30) DEFAULT NULL,
+  `comments` varchar(30) DEFAULT NULL,
+  `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `35`
+--
+
+CREATE TABLE IF NOT EXISTS `35` (
+  `uid` int(30) DEFAULT NULL,
+  `comments` varchar(30) DEFAULT NULL,
+  `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `36`
+--
+
+CREATE TABLE IF NOT EXISTS `36` (
+  `uid` int(30) DEFAULT NULL,
+  `comments` varchar(30) DEFAULT NULL,
+  `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `37`
+--
+
+CREATE TABLE IF NOT EXISTS `37` (
+  `uid` int(30) DEFAULT NULL,
+  `comments` varchar(30) DEFAULT NULL,
+  `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `39`
+--
+
+CREATE TABLE IF NOT EXISTS `39` (
+  `uid` int(30) DEFAULT NULL,
+  `comments` varchar(30) DEFAULT NULL,
+  `posted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `posts`
 --
 
@@ -83,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   PRIMARY KEY (`pid`),
   UNIQUE KEY `posted_on` (`posted_on`),
   UNIQUE KEY `pid` (`pid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `posts`
@@ -93,7 +153,13 @@ INSERT INTO `posts` (`pid`, `post_content`, `uid`, `auth`, `posted_on`) VALUES
 (30, 'hi', 2, 2, '2015-03-14 15:21:57'),
 (31, 'test', 2, 2, '2015-03-14 15:23:13'),
 (32, 'hi<br><br>', 1, 11, '2015-03-14 15:37:38'),
-(33, 'cool', 9, 55, '2015-03-14 15:38:44');
+(33, 'cool', 9, 55, '2015-03-14 15:38:44'),
+(34, '&lt;hr&gt;', 1, 11, '2015-03-17 14:06:07'),
+(35, '<a target="_blank" rel="nofollow" href="http://facebook.com">http://facebook.com/</a>', 1, 11, '2015-03-17 14:06:50'),
+(36, ''';', 1, 11, '2015-03-20 14:59:48'),
+(37, '<h1><u><b><i>ssda</i></b><b><i></i></b></u></h1>', 1, 11, '2015-03-20 16:27:33'),
+(38, '&nbsp;', 1, 11, '2015-03-20 16:29:24'),
+(39, 'dx<br><br>', 11, 77, '2015-03-21 06:11:39');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

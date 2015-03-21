@@ -190,9 +190,10 @@
                                         </li>
                                         <!-- /.timeline-label -->
                                         <!-- timeline item -->
-                                       
+                                       <?php $cmtstyles = array('info','danger','warning'); ?>
                                         <?php
-                                            $styles = array('fa fa-comments-o bg-blue','fa fa-comments bg-yellow','fa fa-comments bg-red');
+                                            $k=0;
+                                            $styles = array('fa fa-comments-o bg-blue','fa fa-comments bg-yellow','fa fa-comments bg-red','fa fa- fa-binoculars bg-blue','fa fa- fa-binoculars bg-yellow','fa fa- fa-binoculars bg-red','fa fa-wifi bg-blue','fa fa-wifi bg-yellow','fa fa-wifi bg-red','fa fa-gears bg-blue','fa fa-gears bg-yellow','fa fa-gears bg-red','fa fa-lightbulb-o bg-blue','fa fa-lightbulb-o bg-yellow','fa fa-lightbulb-o bg-red','fa fa-recycle bg-blue','fa fa-recycle bg-yellow','fa fa-recycle bg-red','fa fa-tags bg-blue','fa fa-tags bg-yellow','fa fa-tags bg-red');
                                             $id = $system->id; 
                                             $query = mysqli_query($sql,"SELECT * FROM iii_newsfeed.$id ORDER BY posted_on DESC");
                                             if($query)
@@ -205,7 +206,8 @@
                                                 $name_query = mysqli_query($sql,"SELECT * FROM iii.users WHERE id='$user_id' ");
                                                 $name_query = mysqli_fetch_array($name_query);
                                                 $name = $name_query['username'];
-                                                $i = rand(0,2);
+                                                $i = rand(0,20);
+                                                $l = rand(0,2);
                                                 $time = $result2['posted_on'];
                                                 $posted = time1($time);
 
@@ -221,7 +223,21 @@
                                                     <div class="timeline-body">
                                                         <p><?php echo $result2['post_content'] ?></p>
                                                     </div>
-                                                    <div class='timeline-footer'>
+                                                    <div class='timeline-footer' id="cmtbtn<?php echo $k; ?>">
+                                                        <button class="btn bg-blue btn-xs" >Comments</button><br><br>
+                                                    </div>
+                                                    <div class='timeline-footer' id="cmt<?php echo $k;$k++; ?>">    
+                                                        <div class="callout callout-<?php echo $cmtstyles[$l];?>" style="margin: 0px 0 20px 45px;">
+                                                            <span class="time pull-right" style="font-size:12px;"><i class="fa fa-clock-o" ></i> <?php echo $posted; ?></span>
+                                                            <h1 style="font-size:25px;   margin-top: -5px;"><a href="#"><?php echo $name ?></a></h1>
+                                                            <p><?php echo $result2['post_content'] ?></p>
+                                                        </div>
+                                                        <form action="testing.php" method="post">
+                                                        <textarea name="content" class="textarea" placeholder="Message" style="width: 100%; height: 75px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                                        <div class='timeline-footer'>
+                                                            <button type="submit" class="btn bg-green btn-xs">Post</button>
+                                                        </div>
+                                                    </form>
                                                     </div>
                                                 </div>
                                             </li>
@@ -403,6 +419,13 @@
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
 <?php include_once('includes/footer.php'); ?>
-
+    <script type="text/javascript">
+        <?php for($k;$k>=0;$k--) {?>
+            $(<?php echo "\"#cmt$k\""; ?>).hide();
+            $(<?php echo "\"#cmtbtn$k\""; ?>).click(function(){
+                $(<?php echo "\"#cmt$k\""; ?>).toggle('slow');  
+            });
+        <?php } ?>
+    </script>
      </body>
 </html>

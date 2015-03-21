@@ -82,7 +82,28 @@
                                 </div>
                                 <div class="box-body">
                                     <h3 class="box-title">Add Admin</h3>
-                                    <
+                                    <hr>
+                                    <form action="addadmin.php" method="post">
+                                        <div class="form-group">
+                                            <h4><i class="fa fa-user"></i> Email Address of the secondary Admin:</h4>
+                                            <input type="email" class="form-control" name="newuser" />
+                                        </div>
+                                        <div class="box-footer clearfix">
+                                            <button class="pull-left btn btn-default" id="submit">Add <i class="fa fa-arrow-circle-right"></i></button>
+                                        </div>
+                                    </form>
+                                    <br>
+                                    <h3 class="box-title">Remove Admin(Only by SuperAdmin)</h3>
+                                    <hr>
+                                    <form action="remadmin.php" method="post">
+                                        <div class="form-group">
+                                            <h4><i class="fa fa-user"></i> Email Address of the secondary Admin:</h4>
+                                            <input type="email" class="form-control" name="newuser" />
+                                        </div>
+                                        <div class="box-footer clearfix">
+                                            <button class="pull-left btn btn-default" id="submit">Remove <i class="fa fa-close"></i></button>
+                                        </div>
+                                    </form>
                                 </div>
                                 <div class="box-footer">
                                 </div>
