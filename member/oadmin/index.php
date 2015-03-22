@@ -86,10 +86,10 @@
                                     <form action="addadmin.php" method="post">
                                         <div class="form-group">
                                             <h4><i class="fa fa-user"></i> Email Address of the secondary Admin:</h4>
-                                            <input type="email" class="form-control" name="newuser" />
+                                            <input type="email" class="form-control" name="newuser" style="border-radius: 20px !important;" />
                                         </div>
                                         <div class="box-footer clearfix">
-                                            <button class="pull-left btn btn-default" id="submit">Add <i class="fa fa-arrow-circle-right"></i></button>
+                                            <button class="pull-left btn btn-success" id="submit" style="border-radius: 20px !important;">Add <i class="fa fa-arrow-circle-right"></i></button>
                                         </div>
                                     </form>
                                     <br>
@@ -98,10 +98,10 @@
                                     <form action="remadmin.php" method="post">
                                         <div class="form-group">
                                             <h4><i class="fa fa-user"></i> Email Address of the secondary Admin:</h4>
-                                            <input type="email" class="form-control" name="newuser" />
+                                            <input type="email" class="form-control" name="newuser" style="border-radius: 20px !important;" />
                                         </div>
                                         <div class="box-footer clearfix">
-                                            <button class="pull-left btn btn-default" id="submit">Remove <i class="fa fa-close"></i></button>
+                                            <button class="pull-left btn btn-danger" id="submit" style="border-radius: 20px !important;">Remove <i class="fa fa-close"></i></button>
                                         </div>
                                     </form>
                                 </div>
