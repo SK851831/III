@@ -87,7 +87,7 @@
 				
 				$string = "CREATE TABLE iii_posts.$pid (
 							uid INT(30),
-							comments VARCHAR(30),
+							comments VARCHAR(500),
 							posted TIMESTAMP 
 							)";
 				

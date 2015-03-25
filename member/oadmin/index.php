@@ -83,25 +83,73 @@
                                 <div class="box-body">
                                     <h3 class="box-title">Add Admin</h3>
                                     <hr>
-                                    <form action="addadmin.php" method="post">
+                                    <?php
+                                        if (isset($_POST['addadmin'])) {
+                                            $email=$_POST['user'];
+                                            if (empty($email)) {
+                                                echo '<div class="callout callout-danger"><h3 class="font-semibold">You forgot to enter the email address.</h3></div><br />';
+                                            }
+                                            if (!empty($email)) {
+                                                $sql = dbConnect();
+                                                $query="SELECT * FROM users where email='$email' and auth='11'";
+                                                $result=mysqli_query($sql,$query)
+                                                or die("error query: ".mysqli_error());
+                                                if(!($row=mysqli_fetch_array($result))){
+                                                $query="INSERT INTO users(email,auth) values('$email',11)";
+                                                $result=mysqli_query($sql,$query);
+                                                //include_once('mail.php');
+                                                mysqli_close($sql);
+                                                echo '<div class="callout callout-info"><h1 class="font-semibold">Admin is added.</h1></div>';
+                                                }
+                                                    else{
+                                                        echo '<div class="callout callout-warning"><h3 class="font-semibold">This email is already registered as admin.!!!</h3></div><br />';
+                                                    }
+                                            }
+                                        }
+?>
+                                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                                         <div class="form-group">
                                             <h4><i class="fa fa-user"></i> Email Address of the secondary Admin:</h4>
-                                            <input type="email" class="form-control" name="newuser" style="border-radius: 20px !important;" />
+                                            <input type="email" class="form-control" name="user" style="border-radius: 20px !important;" required/>
                                         </div>
                                         <div class="box-footer clearfix">
-                                            <button class="pull-left btn btn-success" id="submit" style="border-radius: 20px !important;">Add <i class="fa fa-arrow-circle-right"></i></button>
+                                            <button class="pull-left btn btn-success" name="addadmin" style="border-radius: 20px !important;">Add <i class="fa fa-arrow-circle-right"></i></button>
                                         </div>
                                     </form>
                                     <br>
-                                    <h3 class="box-title">Remove Admin(Only by SuperAdmin)</h3>
+                                    <h3 class="box-title">Remove Admin</h3>
                                     <hr>
-                                    <form action="remadmin.php" method="post">
+                                    <?php
+                                        if (isset($_POST['remadmin'])) {
+                                            $email=$_POST['user'];
+                                            if (empty($email)) {
+                                                echo '<div class="callout callout-danger"><h3 class="font-semibold">You forgot to enter the email address.</h3></div><br />';
+                                            }
+                                            if (!empty($email)) {
+                                                $sql = dbConnect();
+                                                $query="SELECT * FROM users where email='$email' and auth='11'";
+                                                $result=mysqli_query($sql,$query)
+                                                or die("error query: ".mysqli_error());
+                                                if($row=mysqli_fetch_array($result)){
+                                                $query="DELETE from users where email='$email' and auth='11'";
+                                                $result=mysqli_query($sql,$query);
+                                                //include_once('mail.php');
+                                                mysqli_close($sql);
+                                                echo '<div class="callout callout-info"><h1 class="font-semibold">Admin is removed.</h1></div>';
+                                                }
+                                                    else{
+                                                        echo '<div class="callout callout-warning"><h3 class="font-semibold">This email is not already registered as admin.!!!</h3></div><br />';
+                                                    }
+                                            }
+                                        }
+?>
+                                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                                         <div class="form-group">
                                             <h4><i class="fa fa-user"></i> Email Address of the secondary Admin:</h4>
-                                            <input type="email" class="form-control" name="newuser" style="border-radius: 20px !important;" />
+                                            <input type="email" class="form-control" name="user" style="border-radius: 20px !important;" required />
                                         </div>
                                         <div class="box-footer clearfix">
-                                            <button class="pull-left btn btn-danger" id="submit" style="border-radius: 20px !important;">Remove <i class="fa fa-close"></i></button>
+                                            <button class="pull-left btn btn-danger" name="remadmin" style="border-radius: 20px !important;">Remove <i class="fa fa-close"></i></button>
                                         </div>
                                     </form>
                                 </div>
