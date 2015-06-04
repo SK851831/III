@@ -8,6 +8,13 @@ $output_form = false;
   // Clear the error message
   $error_msg = "";
 // If the session vars aren't set, try to set them with a cookie
+  if (!isset($_SESSION['email'])) {
+    if (isset($_COOKIE['email']) && isset($_COOKIE['username'])&& isset($_COOKIE['auth'])) {
+      $_SESSION['email'] = $_COOKIE['email'];
+      $_SESSION['username'] = $_COOKIE['username'];
+      $_SESSION['auth'] = $_COOKIE['auth'];
+    }
+  }
   if (isset($_SESSION['email'])) {
 	$home_url = 'member/index.php';
           header('Location: ' . $home_url);
@@ -82,13 +89,11 @@ $output_form = false;
 		<div class="container">
 			<div class="logo"> <a href="#"><img src="assets/img/logo.png" alt="logo"></a>
 			</div>
- 
-			<h1>The Most Handsome and <strong>Powerful Way</strong> <br>
-			to <strong>Proving</strong> your Efficiency in K(C)oding.</h1>
+			<h1>Login to <strong>Explore<br></strong></h1>
 			<?php
   // If the session var is empty, show any error message and the log-in form; otherwise confirm the log-in
   if ($output_form == true) {
-    echo '<h3>You are not a member.Pls contact the respective organiser..!!!<br>'.$error_msg.'<br>Thank u!!...</h3><br>';
+    echo '<h3>'.$error_msg.'<br>Thank u!!...</h3><br>';
 }?>
  
 			<div class="row">
@@ -100,175 +105,26 @@ $output_form = false;
 								<input id="textbox"class="form-control input-lg" name="email" type="email" id="address" placeholder="Enter your email" data-validate="validate(required, email)" required="required">
 							</div>
 							<div class="col-md-5 col-sm-4">
-								<br><br><br><input id="textbox"class="form-control input-lg" name="pass" type="password" id="pass" placeholder="Enter your Pass" required="required">
+								<input id="textbox"class="form-control input-lg" name="pass" type="password" id="pass" placeholder="Enter your Pass" required="required">
 							</div>
 						</div><br>
 						<div class="form-group">
 							<button type="submit" name="submit" class="btn btn-success btn-lg">GET ACCESS</button>
 						</div>
 					</form>
-					<span id="result" class="alertMsg"></span> </div>
-				</div>
- 
-				<a href="index.php#explore" class="scrollto">
-				<p>SCROLL DOWN TO EXPLORE</p>
-				<p class="scrollto--arrow"><img src="assets/img/scroll_down.png" alt="scroll down arrow"></p>
-				</a>
-		</div><!--/container -->
-	</main><!--/main -->
- 
-
-    <!-- ******************** FEATURES SECTION ******************** -->	
-	<div class="container" id="explore">
- 
-		<div class="section-title">
-			<h2>Showcase your product with style.</h2>
-			<h4>This site is ideal for Projects or your Programming Development.</h4>
-		</div>
-
-		<section class="row heroimg breath">
-			<div class="col-md-12 text-center"> 
-				<img src="assets/img/flat-mockup-template.png" alt="flat-mockup-template">
-			</div>
-		</section><!--/section -->
- 
-		<div class="section-title">
-			<h2>More information about III.</h2>
-			<h4>Always Inspire Initiate Innovate.</h4>
-		</div>
-		
-		<section class="row features">
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail"> 
-					<img src="assets/img/service_01.png" alt="analytics-icon">
-					<div class="caption">
-						<h3>Improve K(C)oding Skills</h3>
-						<p>Your K(C)oding Skills are improved by performing projects.</p>
-					</div>
-				</div><!--/thumbnail -->
-			</div><!--/col-sm-6-->
- 
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail"> 
-					<img src="assets/img/service_02.png" alt="analytics-icon">
-					<div class="caption">
-						<h3>Evolve UIs</h3>
-						<p>The next level on UIs are performed here.</p>
-					</div>
-				</div><!--/thumbnail -->
-			</div><!--/col-sm-6-->
- 
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail"> 
-					<img src="assets/img/service_03.png" alt="analytics-icon">
-					<div class="caption">
-						<h3>"Take" Action.</h3>
-						<p>The fast level for k(c)oding can be achieved by Experience.</p>
-					</div>
-				</div><!--/thumbnail -->
-			</div><!--/col-sm-6-->
- 
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail"> 
-					<img src="assets/img/service_04.png" alt="analytics-icon">
-					<div class="caption">
-						<h3>Checklist.</h3>
-						<p>Check up your list of "Learned Programming Skills" after you joined here.</p>
-					</div>
-				</div><!--/thumbnail -->
-			</div><!--/col-sm-6-->
-		</section><!--/section -->
-	</div><!--/container -->
- 
-
-	    <!-- ******************** TESTIMONIALS SECTION ******************** -->	 
-		<div class="highlight testimonials">
-			<div class="container">
-				<div class="section-title">
-					<h2>What our community members said</h2>
-					<h4>Don't take our word just. Experience it. </h4>
-				</div>
-				
-				<section class="row breath">
-					<div class="col-md-6">
-						<div class="testblock">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </div>
-						<div class="clientblock"> 
-							<img src="assets/img/find_user.png" alt=".">
-							<p><strong>AAAA AAAA</strong> <br>
-								Member of <a href="index.php#">III</a>
-							</p>
-						</div>
-					</div><!--/col-md-6 -->
 					
-					<div class="col-md-6">
-						<div class="testblock">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </div>
-						<div class="clientblock"> 
-							<img src="assets/img/find_user.png" alt=".">
-							<p><strong>AAAA AAAA</strong> <br>
-								Member of <a href="index.php#">III</a>
-							</p>
-						</div>
-					</div><!--/col-md-6 -->
-				</section><!--/section -->
- 
-			</div><!--/container -->
-		</div><!--/highlight Testimonials -->
- 
-	    <!-- ******************** FAQ ******************** -->	  
- 
-		<div class="section-title">
-			<h5>Frequently Asked Questions</h5>
-		</div>
-		
-		<section class="row faq breath">
-			<div class="col-md-6">
-				<h6>How does III Functions?</h6>
-				<p>III functions in a way that built the projects helped by others, so that others too get helped by experience.</p>
-				<h6>I dont-know programming languages to built app? Can I join III?</h6>
-				<p>Absolutely. You can join III, where anyone can learn anything required to built an app or management too.</p>
-			</div><!--/col-md-6 -->
-			
-			<div class="col-md-6">
-				<h6>Do I need to do only specific projects allocated by III?</h6>
-				<p>No. You get the any projects that you have interested to built. Any help including the requirements are available.</p>
-				<h6>What is expansion of III?</h6>
-				<p>Inspire Inititate Innovative.</p>
-			</div><!--/col-md-6 -->
-		</section><!--/section faq -->
- 
-	</div><!--/container -->
-		<div class="container">
-			<section class="row breath">
+				</div>
 				<div class="col-md-12 footerlinks">
 					<p>&copy; 2015 III. All Rights Reserved</p>
 				</div>
-			</section><!--/section -->
+			
+				
 		</div><!--/container -->
- 
- 
- 
- 
+	</main><!--/main -->
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.js"></script>
 <script src="assets/js/easing.js"></script>
 <script src="assets/js/nicescroll.js"></script>
- 
- 
-<script>
 
-
- $(function() {
-    $('.scrollto, .gototop').bind('click',function(event){
-		 var $anchor = $(this);
-		 $('html, body').stop().animate({
-         scrollTop: $($anchor.attr('href')).offset().top
-          }, 1500,'easeInOutExpo');
-     event.preventDefault();
-      });
-  });
-        
-
-</script>
- 
 </body>
 </html>

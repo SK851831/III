@@ -27,10 +27,13 @@
         <script src="js/AdminLTE/app.js" type="text/javascript"></script>
 
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="js/AdminLTE/dashboard.js" type="text/javascript"></script>
-        
+        <script src="js/AdminLTE/dashboard.js" type="text/javascript"></script> 
+        <!-- AJS-->
+        <script src="js/angular.js" type="text/javascript"></script>
+
         <!-- AdminLTE for demo purposes -->
-        <script src="js/AdminLTE/demo.js" type="text/javascript"></script>
+        <script src="js/AdminLTE/demo.js" type="text/javascript"></script> 
+        
         <!-- <script type="text/javascript">
                 function cl(){
                     document.getElementById('msg').innerHTML = "";
@@ -42,3 +45,5 @@
                     document.getElementById('msg3').innerHTML = "";
                 }
         </script> -->
+        <script src="js/post.js" type="text/javascript"></script> 
+        <script src="js/cmt.js" type="text/javascript"></script> 

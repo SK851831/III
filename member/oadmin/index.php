@@ -107,7 +107,7 @@
                                             }
                                         }
 ?>
-                                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                                    <form action="" id="add">
                                         <div class="form-group">
                                             <h4><i class="fa fa-user"></i> Email Address of the secondary Admin:</h4>
                                             <input type="email" class="form-control" name="user" style="border-radius: 20px !important;" required/>

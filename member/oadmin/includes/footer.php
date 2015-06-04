@@ -30,6 +30,8 @@
         <script src="js/AdminLTE/dashboard.js" type="text/javascript"></script>
         <!-- AJS-->
         <script src="js/angular.js" type="text/javascript"></script>
+        <script src="js/add.js" type="text/javascript"></script>
+        <script src="js/rem.js" type="text/javascript"></script>
 
         <!-- AdminLTE for demo purposes -->
         <script src="js/AdminLTE/demo.js" type="text/javascript"></script>

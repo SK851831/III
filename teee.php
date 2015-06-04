@@ -1,10 +1,7 @@
 <?php
-	$string='hello\'coolpdspdsfpfsd';
-	$len=strlen($string);
-	$str=str_split($string,6);
-	$string=implode('<br>',$str);
-	echo "$string<br>";
-	echo $len."<br>";
-	echo rand(0,1);
+if(strpos("<h1><br></h1>",'</h11>'))
+	echo 'cool';
+else
+	echo 'fool';
 
 ?>
