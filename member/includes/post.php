@@ -1,5 +1,6 @@
-  var form = $('#cmtForm');
-  var submit = $('#cmtPost');
+<script type="text/javascript">
+  var form = $('#form');
+  var submit = $('#post');
 form.on('submit', function(e) {
     // prevent default action
     e.preventDefault();
@@ -7,7 +8,7 @@ form.on('submit', function(e) {
     // send ajax request
 
     $.ajax({
-      url: 'testing1.php',
+      url: 'testing.php',
       type: 'POST',
       cache: false,
       data: form.serialize(), //form serizlize data
@@ -28,3 +29,4 @@ form.on('submit', function(e) {
       }
     });
   });
+</script>

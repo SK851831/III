@@ -17,6 +17,8 @@
 		$styles = array('fa fa-apple bg-blue','fa fa-apple bg-yellow','fa fa-apple bg-red','fa fa-android bg-blue','fa fa-android bg-yellow','fa fa-android bg-red','fa fa-whatsapp bg-blue','fa fa-whatsapp bg-yellow','fa fa-whatsapp bg-red','fa fa-comments-o bg-blue','fa fa-comments bg-yellow','fa fa-comments bg-red','fa fa- fa-binoculars bg-blue','fa fa- fa-binoculars bg-yellow','fa fa- fa-binoculars bg-red','fa fa-wifi bg-blue','fa fa-wifi bg-yellow','fa fa-wifi bg-red','fa fa-gears bg-blue','fa fa-gears bg-yellow','fa fa-gears bg-red','fa fa-lightbulb-o bg-blue','fa fa-lightbulb-o bg-yellow','fa fa-lightbulb-o bg-red','fa fa-recycle bg-blue','fa fa-recycle
 		 bg-yellow','fa fa-recycle bg-red','fa fa-tags bg-blue','fa fa-tags bg-yellow','fa fa-tags bg-red');
 		$i = rand(0,20);
+		$l = rand(0,2);
+		$cmtstyles = array('info','danger','warning');
 	?>
 	<li id="pt">
 	<!-- timeline icon -->
@@ -27,13 +29,17 @@
 	        <div class="timeline-body">
 	            <p style="word-wrap:break-word"><?php echo $content; ?></p>
 	        </div>
-	        <form action="testing1.php" method="post">
-	        	<textarea name="content" class="textarea" placeholder="Message" style="width: 100%; border-radius: 20px !important; height: 75px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-	        	<div class='timeline-footer'>
-	        	    <button type="submit" class="btn bg-green btn-xs">Comment <i class="fa fa-mail-reply"></i></button>
-	        	</div>
-	    	</form>
-	        </div>
+	       	<div class='timeline-footer' id="cmtbtnnew">
+            	<button class="btn bg-blue btn-xs" >Comments</button><br><br>
+            </div>
+	        <div class='timeline-footer' id="cmtnew">    
+				<form id="cmtForm" method="post">
+					<textarea name="content" class="textarea" placeholder="Message" style="width: 100%; border-radius: 20px !important; height: 75px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+					<div class='timeline-footer'>
+	    				<button type="submit" id="cmtPost" class="btn bg-green btn-xs">Comment <i class="fa fa-mail-reply"></i></button>
+					</div> 
+				</form>                                       
+	    	</div>
 	    </div>
 	</li>
 	<!-- END timeline item -->

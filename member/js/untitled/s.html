@@ -193,13 +193,13 @@
                                         <!-- timeline item -->
                                        <?php $cmtstyles = array('info','danger','warning'); ?>
                                         <?php
-                                            $k=0;
                                             $styles = array('fa fa-apple bg-blue','fa fa-apple bg-yellow','fa fa-apple bg-red','fa fa-android bg-blue','fa fa-android bg-yellow','fa fa-android bg-red','fa fa-whatsapp bg-blue','fa fa-whatsapp bg-yellow','fa fa-whatsapp bg-red','fa fa-comments-o bg-blue','fa fa-comments bg-yellow','fa fa-comments bg-red','fa fa- fa-binoculars bg-blue','fa fa- fa-binoculars bg-yellow','fa fa- fa-binoculars bg-red','fa fa-wifi bg-blue','fa fa-wifi bg-yellow','fa fa-wifi bg-red','fa fa-gears bg-blue','fa fa-gears bg-yellow','fa fa-gears bg-red','fa fa-lightbulb-o bg-blue','fa fa-lightbulb-o bg-yellow','fa fa-lightbulb-o bg-red','fa fa-recycle bg-blue','fa fa-recycle bg-yellow','fa fa-recycle bg-red','fa fa-tags bg-blue','fa fa-tags bg-yellow','fa fa-tags bg-red');
                                             $id = $system->id; 
                                             $query = mysqli_query($sql,"SELECT * FROM iii_newsfeed.$id ORDER BY posted_on DESC");
                                             if($query)
+                                            if(mysqli_num_rows($query)>0)
                                             while($row = mysqli_fetch_assoc($query))
-                                            {
+                                            {   $s=$row;
                                                 $post_id = $row['pid'];
                                                 $query2 = mysqli_query($sql,"SELECT * FROM iii_posts.posts WHERE pid= '$post_id'");
                                                 $result2 = mysqli_fetch_array($query2);
@@ -208,40 +208,59 @@
                                                 $name_query = mysqli_fetch_array($name_query);
                                                 $name = $name_query['username'];
                                                 $i = rand(0,20);
+                                                $k=0;
                                                 $time = $result2['posted_on'];
                                                 $posted = time1($time);
                                             ?>
-                                            <li id="pt">
-                                            <!-- timeline icon -->
-                                                <i class="<?php echo $styles[$i] ?>"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time" style="font-size:12px;"><i class="fa fa-clock-o" ></i> <?php echo $posted; ?></span>
-                                                    <h1 class="timeline-header"  style="font-size:25px;"><a href="#"><?php echo $name ?></a></h1>
-                                                    <div class="timeline-body">
-                                                        <p style="word-wrap:break-word"><?php echo $result2['post_content'] ?></p>
+
+                                        <li id="pt">
+                                        <!-- timeline icon -->
+                                            <i class="<?php echo $styles[$i]; ?>"></i>
+                                            <div class="timeline-item">
+                                                <span class="time" style="font-size:12px;"><i class="fa fa-clock-o" ></i> <?php echo $posted; ?></span>
+                                                <h1 class="timeline-header"  style="font-size:25px;"><a href="#"><?php echo $name; ?></a></h1>
+                                                <div class="timeline-body">
+                                                    <p style="word-wrap:break-word"><?php echo $result2['post_content']; ?></p>
+                                                </div>
+                                                <!-- The comments -->
+                                                <div class='timeline-footer' id="cmtbtn">
+                                                    <button class="btn bg-blue btn-xs" >Comments</button><br><br>
+                                                </div>
+                                                <?php 
+                                                    $cmtid=0;
+                                                    
+                                                    $cmtquery = mysqli_query($sql,"SELECT * FROM iii_posts.$post_id ORDER BY posted DESC");
+                                                    if($cmtquery){
+                                            if(mysqli_num_rows($cmtquery)>0)
+                                                while($cmtrow = mysqli_fetch_assoc($cmtquery))
+                                                {
+                                                    $cmt_id = $cmtrow['uid'];
+                                                    $cmtcont = $cmtrow['comments'];
+                                                    $cmttime= $cmtrow['posted_on'];
+                                                    $cmtquery2 = mysqli_query($sql,"SELECT * FROM iii.users WHERE id= '$cmt_id'");
+                                                    $cmtresult2 = mysqli_fetch_array($cmtquery2);
+                                                    $cmt_name = $cmtresult2['username'];
+                                                    $l = rand(0,2);
+                                                    $cmtposted = time1($time);
+                                                ?>
+                                                <div class='timeline-footer' id="cmt">    
+                                                    <div class="callout callout-<?php  echo $cmtstyles[$l];?>" style="margin: 0px 0 20px 45px;">
+                                                        <span class="time pull-right" style="font-size:12px;"><i class="fa fa-clock-o" ></i> <?php echo $cmtposted; ?></span>
+                                                        <h1 style="font-size:25px;   margin-top: -5px;"><a href="#"><?php echo $name; ?></a></h1>
+                                                        <p style="word-wrap:break-word"><?php echo $cmtcont; ?></p>
                                                     </div>
-                                                    <!-- The comments -->
-                                                    <div class='timeline-footer' id="cmtbtn<?php echo $k; $k++;?>">
-                                                        <button class="btn bg-blue btn-xs" >Comments</button><br><br>
-                                                    </div>
-                                                    <div class='timeline-footer' id="cmt<?php echo $cmtid; ?>">    
-                                                        <div class="callout callout-<?php  echo $cmtstyles[$l];?>" style="margin: 0px 0 20px 45px;">
-                                                            <span class="time pull-right" style="font-size:12px;"><i class="fa fa-clock-o" ></i> <?php echo $posted; ?></span>
-                                                            <h1 style="font-size:25px;   margin-top: -5px;"><a href="#"><?php echo "name"; ?></a></h1>
-                                                            <p style="word-wrap:break-word"><?php echo "comment"; ?></p>
-                                                        </div>
-                                                       
-                                                        <form id="cmtForm" method="post">
+                                                    <?php } } ?>
+                                                    <form id="cmtForm" method="post">
                                                         <textarea name="content" class="textarea" placeholder="Message" style="width: 100%; border-radius: 20px !important; height: 75px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                                         <div class='timeline-footer'>
                                                             <button type="submit" id="cmtPost" class="btn bg-green btn-xs">Comment <i class="fa fa-mail-reply"></i></button>
                                                         </div>
                                                     </form> 
-                                                    </div>
                                                 </div>
-                                            </li>
-                                            <!-- END timeline item -->
-                                            <!-- timeline item -->
+                                            </div>
+                                        </li> 
+                                        <!-- END timeline item -->
+                                        <!-- timeline item -->
 
                                         <?php
                                              }

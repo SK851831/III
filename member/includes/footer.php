@@ -34,16 +34,8 @@
         <!-- AdminLTE for demo purposes -->
         <script src="js/AdminLTE/demo.js" type="text/javascript"></script> 
         
-        <!-- <script type="text/javascript">
-                function cl(){
-                    document.getElementById('msg').innerHTML = "";
-                }
-                function cl2(){
-                    document.getElementById('msg2').innerHTML = "";
-                }
-                function cl3(){
-                    document.getElementById('msg3').innerHTML = "";
-                }
-        </script> -->
-        <script src="js/post.js" type="text/javascript"></script> 
-        <script src="js/cmt.js" type="text/javascript"></script> 
+        <?php
+            require_once('post.php');
+            require_once('cmt.php');
+            require_once('cmtD.php');
+        ?>
