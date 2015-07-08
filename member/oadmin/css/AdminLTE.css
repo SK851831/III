@@ -522,7 +522,7 @@ body > .header .navbar .nav > li > a:hover > .label {
 }
 body > .header .logo {
   float: left;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 50px;
   text-align: center;
   padding: 0 10px;
@@ -1822,7 +1822,7 @@ Component: timeline
   color: #555;
   border-bottom: 1px solid #f4f4f4;
   padding: 5px;
-  font-size: 16px;
+  font-size: 25px;
   line-height: 1.1;
 }
 .timeline > li > .timeline-item > .timeline-header > a {

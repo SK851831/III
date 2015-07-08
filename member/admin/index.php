@@ -31,7 +31,7 @@
                         <li>
                             <a href="../inbox.php">
                                 <i class="fa fa-inbox"></i> <h4>Mailbox</h4>
-                                
+
                             </a>
                         </li>
                         <li class="active">
@@ -39,7 +39,7 @@
                                 <i class="fa fa-laptop"></i> <h4>Admin</h4>
                             </a>
                         </li>
-                        
+
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -141,10 +141,6 @@
                             </div>
                         </div><!-- ./col -->
                     </div><!-- /.row -->
-                     <div class="callout callout-warning">
-                                        <h4>Notify is Under Research!</h4>
-                                        <p>Hit <kbd>F5</kbd> to recieve new notifics.!!!</p>
-                                    </div> 
                     <!-- Main row -->
                     <div class="row">
                         <!-- Left col -->
@@ -155,7 +151,7 @@
                                     <h3 class="box-title">User Settings</h3>
                                 </div>
                                 <div class="box-body">
-                                    
+
                                 </div>
                                 <div class="box-footer">
                                 </div>
@@ -232,6 +228,6 @@
         <!-- add new calendar event modal -->
 
 
-        <?php include_once('includes/footer.php'); ?> 
+        <?php include_once('includes/footer.php'); ?>
     </body>
 </html>

@@ -1,12 +1,11 @@
 <?php include_once 'includes/session.php'; ?>
-
 <!DOCTYPE html>
 <html>
-    <?php include_once('includes/head.php'); 
+    <?php include_once('includes/head.php');
             include('time.php');
             $sql = dbConnect();
     ?>
-    <body class="skin-blue" style="font-family: 'Titillium Web', sans-serif;" >
+    <body class="skin-blue" style="font-family: 'Titillium Web', sans-serif;" onload="postD(<?php echo $system->id; ?>)">
         <?php include_once('includes/header.php'); ?>
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Left side column. contains the logo and sidebar -->
@@ -34,21 +33,21 @@
                         <li>
                             <a href="inbox.php">
                                 <i class="fa fa-inbox"></i> <h4>Mailbox</h4>
-                                
+
                             </a>
                         </li>
                         <?php if($system->authen==11){?>
                         <li>
                             <a href="oadmin/index.php">
                                 <i class="fa fa-desktop"></i> <h4>OAdmin</h4>
-                                
+
                             </a>
                         </li>
                         <?php }elseif($system->authen>10){?>
                         <li>
                             <a href="admin/index.php">
                                 <i class="fa fa-laptop"></i> <h4>Admin</h4>
-                                
+
                             </a>
                         </li>
                         <?php } ?>
@@ -152,10 +151,6 @@
                             </div>
                         </div><!-- ./col -->
                     </div><!-- /.row -->
-                     <div class="callout callout-warning">
-                                        <h4>Notify is Under Research!</h4>
-                                        <p>Hit <kbd>F5</kbd> to recieve new notifics.!!!</p>
-                                    </div>
                     <!-- Main row -->
                     <div class="row">
                         <!-- Left col -->
@@ -171,30 +166,43 @@
                                             <div class="timeline-item">
                                                 <h1 class="timeline-header"><a href="#">Status Feed</a></h1>
                                                 <div class="timeline-body">
-                                                    <form id="form" method="post">
-                                                        <textarea name="content" id="content" class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 19px; border-radius: 18px !important; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                                        <textarea id="contentPost" class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 19px; border-radius: 18px !important; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                                         <div class='timeline-footer'>
-                                                            <button type="submit" id="post" class="btn bg-green btn-xs">Post <i class="fa fa-mail-forward"></i></button>
+                                                            <button type="submit" id="PostPush" onclick="PostButton()" class="btn bg-green btn-xs">Post </button>
                                                         </div>
-                                                    </form>
                                                 </div>
                                             </div>
                                         </li>
+                                        <div id="postSuccess" style="display:none" class="alert alert-success alert-dismissable">
+                                            <i class="fa fa-check"></i>
+                                            <button type="button" class="close" onclick="$('#postSuccess').hide()" aria-hidden="true">&times;</button>
+                                            Your Status is posted.!!!
+                                        </div>
+                                        <div id="postFailure" style="display:none" class="alert alert-danger alert-dismissable">
+                                            <i class="fa fa-exclamation"></i>
+                                            <button type="button" class="close" onclick="$('#postFailure').hide()" aria-hidden="true">&times;</button>
+                                            Something went wrong pls try later. If it happens always report the Bug!!!
+                                        </div>
                                         <li class="time-label">
                                             <span class="bg-red">
-                                            <?php 
+                                            <?php
                                                 $time = date("Y-m-d ", time());
                                                 echo $time;
 
                                                ?>
                                             </span>
                                         </li>
-                                        <!-- /.timeline-label -->
-                                        <li id="logButton">
-                                            <span>
-                                                <button id="justClick" onclick="postD(<?php echo $system->id; ?>)" class="btn bg-green btn-xs">Load the Post <i class="fa fa-server"></i></button>
-                                            </span>
+
+                                        <li>
+                                            <div class="timeline-item" id="Nopost" style="display:none">
+                                                <div class="box-body">
+                                                    <div class="callout callout-danger">
+                                                        <h4>No post to show!!!</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -211,7 +219,7 @@
 
                                 </div><!-- /.box-body -->
                                 <div class="box-footer clearfix no-border">
-                                    
+
                                 </div>
                             </div><!-- /.box -->
                             <!-- quick email widget -->
@@ -245,7 +253,7 @@
                                     <button class="pull-right btn btn-default" id="sendEmail">Send <i class="fa fa-arrow-circle-right"></i></button>
                                 </div>
                             </div>
-                            
+
 
                         </section><!-- right col -->
                     </div><!-- /.row (main row) -->
@@ -255,6 +263,6 @@
         </div><!-- ./wrapper -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <?php include_once('includes/footer.php'); ?>
-    
+
      </body>
 </html>

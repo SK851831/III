@@ -37,7 +37,7 @@
                         <li>
                             <a href="../inbox.php">
                                 <i class="fa fa-inbox"></i> <h4>Mailbox</h4>
-                                
+
                             </a>
                         </li>
                         <li class="active">
@@ -45,7 +45,7 @@
                                 <i class="fa fa-desktop"></i> <h4>OAdmin</h4>
                             </a>
                         </li>
-                        
+
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -66,11 +66,6 @@
                 </section>
 
                 <!-- Main content -->
-                <section class="content">
-                     <div class="callout callout-warning">
-                                        <h4>Notify is Under Research!</h4>
-                                        <p>Hit <kbd>F5</kbd> to recieve new notifics.!!!</p>
-                                    </div>
                     <!-- Main row -->
                     <div class="row">
                         <!-- Left col -->
@@ -191,32 +186,6 @@
                                     <button class="pull-right btn btn-default" id="sendEmail">Send <i class="fa fa-arrow-circle-right"></i></button>
                                 </div>
                             </div>
-                            <!-- Calendar -->
-                            <div class="box box-solid bg-green-gradient">
-                                <div class="box-header">
-                                    <i class="fa fa-calendar"></i>
-                                    <h3 class="box-title">Calendar</h3>
-                                    <!-- tools box -->
-                                    <div class="pull-right box-tools">
-                                        <!-- button with a dropdown -->
-                                        <div class="btn-group">
-                                            <button class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
-                                            <ul class="dropdown-menu pull-right" role="menu">
-                                                <li><a href="#">Add new event</a></li>
-                                                <li><a href="#">Clear events</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">View calendar</a></li>
-                                            </ul>
-                                        </div>
-                                        <button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                                        <button class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-                                    </div><!-- /. tools -->
-                                </div><!-- /.box-header -->
-                                <div class="box-body no-padding">
-                                    <!--The calendar -->
-                                    <div id="calendar" style="width: 100%"></div>
-                                </div><!-- /.box-body -->
-                            </div><!-- /.box -->
 
                         </section><!-- right col -->
                     </div><!-- /.row (main row) -->
@@ -228,6 +197,6 @@
         <!-- add new calendar event modal -->
 
 
-        <?php include_once('includes/footer.php'); ?> 
+        <?php include_once('includes/footer.php'); ?>
     </body>
 </html>
