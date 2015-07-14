@@ -15,11 +15,30 @@ function PostButton(){
         $("#postSuccess").show('slow');
         document.getElementById("contentPost").value="";
         document.getElementById("PostPush").innerHTML="Post";
-        
+
       }else {
         $("#postFailure").show('slow');
         document.getElementById("contentPost").value="";
         document.getElementById("PostPush").innerHTML="Post";
+      }
+    }
+  });
+}
+
+
+
+function PostDel(Post_id){
+  loadXMLDoc("Post_id="+Post_id+"&t=" + Math.random(),"delPost.php",function(){
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+      var finale=xmlhttp.responseText;
+      if(finale === "success"){
+        $("#pt"+Post_id).hide();
+
+        $("#postDeleteSuccess").show('slow');
+
+      }else {
+        $("#postDeleteFailure").show('slow');
       }
     }
   });

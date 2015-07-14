@@ -183,6 +183,16 @@
                                             <button type="button" class="close" onclick="$('#postFailure').hide()" aria-hidden="true">&times;</button>
                                             Something went wrong pls try later. If it happens always report the Bug!!!
                                         </div>
+                                        <div id="postDeleteSuccess" style="display:none" class="alert alert-success alert-dismissable">
+                                            <i class="fa fa-check"></i>
+                                            <button type="button" class="close" onclick="$('#postDeleteSuccess').hide()" aria-hidden="true">&times;</button>
+                                            The post is deleted.!!!
+                                        </div>
+                                        <div id="postDeleteFailure" style="display:none" class="alert alert-danger alert-dismissable">
+                                            <i class="fa fa-exclamation"></i>
+                                            <button type="button" class="close" onclick="$('#postDeleteFailure').hide()" aria-hidden="true">&times;</button>
+                                            Something went wrong pls try later. If it happens always report the Bug!!!
+                                        </div>
                                         <li class="time-label">
                                             <span class="bg-red">
                                             <?php

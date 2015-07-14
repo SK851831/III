@@ -1,0 +1,112 @@
+var topclass = document.getElementsByClassName("topstar");
+var topid = topclass.id;
+var ul=document.getElementById('ttl');
+var li=document.createElement("li");
+li.setAttribute("id","pt"+topid++);
+("#"+topid).removeClass("topstar");
+li.className="topstar";
+//i
+var randpost=Math.floor((Math.random() * 20));
+var I=document.createElement("i");
+I.className=styles[randpost];
+li.appendChild(I);
+//div-timeline item
+var divtl=document.createElement("div");
+divtl.className="timeline-item";
+//span-time
+var spanDiv=document.createElement("span");
+spanDiv.className="time";
+spanDiv.style.font="12px";
+spanDiv.innerHTML="Now";
+divtl.appendChild(spanDiv);
+//h1-timeline header
+var h1=document.createElement("h1");
+h1.className="timeline-header";
+var a=document.createElement("a");
+a.innerHTML=UniversalName;
+h1.appendChild(a);
+divtl.appendChild(h1);
+//div-timeline body
+var divtb=document.createElement("div");
+divtb.className="timeline-body";
+//p
+var p=document.createElement("p");
+p.style.wordWrap="break-word";
+p.innerHTML=PostContent;
+divtb.appendChild(p);
+divtl.appendChild(divtb);
+//div-timeline footer
+var divtf=document.createElement("div");
+divtf.className="timeline-footer";
+//button-comments
+var button=document.createElement("button");
+button.className="btn bg-blue btn-xs";
+button.innerHTML="Comments";
+button.setAttribute("id","cmtbtn"+topid);
+divtf.appendChild(button);
+//br
+var br=document.createElement("br");
+divtf.appendChild(br);
+divtl.appendChild(divtf);
+
+//div-timeline-footer
+var divtf=document.createElement("div");
+divtf.className="timeline-footer";
+divtf.setAttribute("id","cmt"+topid+"C");
+
+//comment-form
+var textarea=document.createElement("textarea");
+textarea.setAttribute("name","content");
+textarea.className="textarea";
+textarea.setAttribute("id","CmtForm"+topid);
+var alter="CmtForm"+Pid;
+textarea.style.font="14px";
+textarea.style.width="100%";
+textarea.style.borderRadius = "20px !important";
+textarea.style.height="75px";
+textarea.style.lineHeight="18px";
+textarea.style.border="1px solid #dddddd";
+textarea.style.padding="10px";
+divtf.appendChild(textarea);
+var divtfC=document.createElement("div");
+divtfC.className="timeline-footer";
+var buttonC=document.createElement("button");
+buttonC.setAttribute("type","submit");
+buttonC.setAttribute("id","cmtPost"+topid);
+buttonC.className="btn bg-green btn-xs";
+buttonC.innerHTML="Comment";
+divtfC.appendChild(buttonC);
+divtf.appendChild(divtfC);
+//appending
+divtl.appendChild(divtf);
+li.appendChild(divtl);
+var childid=document.getElementById("CmtForm"+topid-1);
+ul.insertBefore(li,childid);
+$("#cmtPost"+topid).click(function(){
+  var cmtbtn1=$(this);
+  var div1=cmtbtn1.parent();
+  var textarea=div1.siblings("textarea");
+  var id=textarea.attr("id");
+  id=id.match(/\d+$/)[0];
+  var conectcont=textarea.val();
+  var C=textarea.prev();
+  Cid=C.attr("id");
+  if(Cid===undefined){
+    var CCC=-1;
+  }
+  else{
+    Cid=Cid.match(/\d+$/)[0];
+    var CCC=Cid;
+  }
+  cmtpostbutton(id,conectcont,CCC);
+});
+
+//Hiding all commentsbox
+$("#cmt"+topid+"C").hide();
+//Toggle commentbox
+$("#cmtbtn"+topid).click(function(){
+    var cmtbtn=$(this);
+    var div=cmtbtn.parent();
+    var cmt=div.next();
+    cmt.toggle('slow');
+});

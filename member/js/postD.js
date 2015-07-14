@@ -1,3 +1,4 @@
+
 function postD(id)
 {
     var cmtstyles=['info','danger','warning'];
@@ -63,29 +64,6 @@ loadXMLDoc("id="+id+"&t=" + Math.random(),"postD.php",function()
           spanDiv.style.font="12px";
           spanDiv.innerHTML=PostedOn;
 
-
-                    var divdown=document.createElement("div");
-                    divdown.className="btn-group text-right";
-                    var downbtn=document.createElement("button");
-                    downbtn.className="btn btn-default btn-sm btn-flat dropdown-toggle";
-                    downbtn.setAttribute("data-toggle","dropdown");
-                    var downspan=document.createElement("span");
-                    downspan.className="caret";
-                    downbtn.appendChild(downspan);
-                    divdown.appendChild(downbtn);
-                    var downul=document.createElement("ul");
-                    downul.className="dropdown-menu";
-                    downul.setAttribute("role","menu");
-                    var downli=document.createElement("li");
-                    var downa=document.createElement("a");
-                    downa.setAttribute("href","#");
-                    downa.innerHTML="Delete";
-                    downli.appendChild(downa);
-                    downul.appendChild(downli);
-                    divdown.appendChild(downul);
-                    spanDiv.appendChild(divdown);
-
-
           divtl.appendChild(spanDiv);
           //h1-timeline header
           var h1=document.createElement("h1");
@@ -94,7 +72,6 @@ loadXMLDoc("id="+id+"&t=" + Math.random(),"postD.php",function()
           a.innerHTML=name;
           h1.appendChild(a);
           divtl.appendChild(h1);
-
           //div-timeline body
           var divtb=document.createElement("div");
           divtb.className="timeline-body";
